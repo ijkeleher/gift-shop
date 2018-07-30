@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/UsersUsernodejsnpm-cache
 
 # testing
 /coverage

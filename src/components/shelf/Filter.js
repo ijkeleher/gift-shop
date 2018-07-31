@@ -16,6 +16,7 @@ const availableSizes = [
   'L',
   'XL',
   'XXL',
+  "DM",
 ];
 
 class Filter extends Component {

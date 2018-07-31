@@ -243,7 +243,7 @@
       "sku": 1234567,
       "title": "Pillow dummy test",
       "description": "",
-      "availableSizes": ["XS"],
+      "availableSizes": ["XS", "DM"],
       "style": "",
       "price": 49.0,
       "installments": 9,

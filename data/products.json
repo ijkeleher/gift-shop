@@ -236,6 +236,20 @@
       "currencyId": "USD",
       "currencyFormat": "$",
       "isFreeShipping": true
+    },
+
+    {
+      "id": 17,
+      "sku": 1234567,
+      "title": "Pillow dummy test",
+      "description": "",
+      "availableSizes": ["XS"],
+      "style": "",
+      "price": 49.0,
+      "installments": 9,
+      "currencyId": "USD",
+      "currencyFormat": "$",
+      "isFreeShipping": true
     }
   ]
 }

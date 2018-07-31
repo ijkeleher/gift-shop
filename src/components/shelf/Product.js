@@ -8,7 +8,6 @@ import util from '../../util';
 
 const Product = (props) => {
   const product = props.product;
-
   // Um componente de input pode alterar a quantidade no futuro
   product.quantity = 1;
 

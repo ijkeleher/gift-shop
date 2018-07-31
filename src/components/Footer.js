@@ -3,7 +3,11 @@ import React from 'react';
 
 const Footer = () => (
   <footer>
-    Created by <a href="https://www.linkedin.com/in/jeffersonribeiro123/" rel="noopener noreferrer" target="_blank" title="Linkedin Profile">Jefferson Ribeiro</a>
+<<<<<<< HEAD
+    Created by Claudia, Inci, Jack and Cassandra of Blue Team 
+=======
+    Created by Claudia, Insi, Jack and Cassandra of Blue Team 
+>>>>>>> d076a0dc3eae9d8fd321ead4779d00c747fc6bc5
   </footer>
 );
 

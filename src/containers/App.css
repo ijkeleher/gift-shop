@@ -124,7 +124,7 @@ footer {
         height: 35px;
         cursor: pointer; }
         .shelf-container-header .sort select:hover {
-          border: 1px solid #5b5a5e; }
+          border: 1px solid #6a6b5e; }
   .shelf-container .shelf-item {
     float: left;
     width: 25%;
@@ -145,7 +145,7 @@ footer {
       right: 10px;
       padding: 5px;
       font-size: 0.6em;
-      background-color: #1b1a20;
+      background-color: #000054;
       cursor: default; }
     .shelf-container .shelf-item__thumb img {
       width: 100%; }
@@ -170,7 +170,7 @@ footer {
       .shelf-container .shelf-item__price .installment {
         color: #9c9b9b; }
     .shelf-container .shelf-item__buy-btn {
-      background-color: #1b1a20;
+      background-color: #000054;
       color: #fff;
       padding: 15px 0;
       margin-top: 10px;
@@ -183,7 +183,7 @@ footer {
   right: -450px;
   width: 450px;
   height: 100%;
-  background-color: #1b1a20;
+  background-color: #000054;
   box-sizing: border-box;
   transition: right 0.2s; }
   .float-cart--open {
@@ -192,7 +192,7 @@ footer {
     width: 50px;
     height: 50px;
     color: #ececec;
-    background-color: #1b1a20;
+    background-color: #000054;
     text-align: center;
     line-height: 50px;
     position: absolute;
@@ -214,7 +214,7 @@ footer {
     background-position: center; }
     .float-cart .bag--float-cart-closed {
       position: absolute;
-      background-color: #000;
+      background-color: #000054;
       background-size: 50%;
       left: -60px;
       width: 60px;
@@ -303,7 +303,7 @@ footer {
           color: #ececec;
           margin: 0; }
         .float-cart__shelf-container .shelf-item__details .desc {
-          color: #5b5a5e;
+          color: #6a6b5e;
           margin: 0; }
       .float-cart__shelf-container .shelf-item__price {
         color: #eabf00;
@@ -314,7 +314,7 @@ footer {
     padding: 5%;
     box-shadow: 0px -0.5em 1em rgba(0, 0, 0, 0.3); }
     .float-cart__footer .sub, .float-cart__footer .sub-price {
-      color: #5b5a5e;
+      color: #6a6b5e;
       vertical-align: middle;
       display: inline-block; }
     .float-cart__footer .sub {

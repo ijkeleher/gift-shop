@@ -147,6 +147,13 @@ footer {
       font-size: 0.6em;
       background-color: #1b1a20;
       cursor: default; }
+      .shelf-item__thumb{
+        min-height: 350px;
+        max-height: 350px;
+      }
+    .shelf-item__thumb img {
+      height: 100%;
+      width: 100%; }
     .shelf-container .shelf-item__thumb img {
       width: 100%; }
     .shelf-container .shelf-item__title {

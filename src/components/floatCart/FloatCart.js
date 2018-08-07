@@ -117,7 +117,7 @@ class FloatCart extends Component {
         )}
 
         {/* If cart is closed, show bag with quantity of product and open cart action */}
-        {!this.state.isOpen && (
+        {!this.state.isOpen && cartTotals.productQuantity<99 &&(
           <span
             onClick={() => this.openFloatCart()}
             className="bag bag--float-cart-closed"
@@ -126,8 +126,20 @@ class FloatCart extends Component {
           </span>
         )}
 
+		
+		{!this.state.isOpen && cartTotals.productQuantity>99 &&(
+          <span
+            onClick={() => this.openFloatCart()}
+            className="bag bag--float-cart-closed"
+          >
+            <span className="bag__quantity">{99}+</span>
+          </span>
+        )}
+		
+		
         <div className="float-cart__content">
-          <div className="float-cart__header">
+		{cartTotals.productQuantity<99 &&(
+		  <div className="float-cart__header">
             <span className="bag">
               <span className="bag__quantity">
                 {cartTotals.productQuantity}
@@ -135,6 +147,18 @@ class FloatCart extends Component {
             </span>
             <span className="header-title">Bag</span>
           </div>
+		)}
+		
+		{cartTotals.productQuantity>99 &&(
+		  <div className="float-cart__header">
+            <span className="bag">
+              <span className="bag__quantity">
+                {99}+
+              </span>
+            </span>
+            <span className="header-title">Bag</span>
+          </div>
+		)}
 
           <div className="float-cart__shelf-container">
             {products}

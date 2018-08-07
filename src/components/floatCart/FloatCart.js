@@ -79,7 +79,7 @@ class FloatCart extends Component {
     const { totalPrice, productQuantity, currencyFormat, currencyId } = this.props.cartTotals;
 
     if (!productQuantity) {
-      alert("Add some product in the bag!");
+      alert("Add some products to the cart!");
     }else {
       alert(`Checkout - Subtotal: ${currencyFormat} ${util.formatPrice(totalPrice, currencyId)}`);
     }
@@ -164,7 +164,7 @@ class FloatCart extends Component {
             {products}
             {!products.length && (
               <p className="shelf-empty">
-                Add some product in the bag <br />:)
+                Your cart is empty, try adding something to cart<br />
               </p>
             )}
           </div>

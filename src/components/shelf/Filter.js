@@ -18,6 +18,28 @@ const availableSizes = [
   "DM",
 ];
 
+const availableColours = [
+  'Red',
+  'Yellow',
+  'Blue',
+  'Green',
+  'Puple',
+  'Orange',
+  'Black',
+  "White",
+];
+
+const availableTypes = [
+  'T-Shirts',
+  'Shorts',
+  'Pants',
+  'Hoodies',
+  'Dresses',
+  'Skirts',
+  'Jackets',
+  "Socks",
+];
+
 class Filter extends Component {
 
   componentWillMount() {
@@ -43,15 +65,27 @@ class Filter extends Component {
     />
   )
 
-  createCheckboxes = () => (
+  createSizeCheckbox = () => (
     availableSizes.map(this.createCheckbox)
+  )
+  
+  createColoursCheckbox = () => (
+    availableColours.map(this.createCheckbox)
+  )
+  
+  createTypeCheckbox = () => (
+    availableTypes.map(this.createCheckbox)
   )
 
   render() {
     return (
       <div className="filters">
         <h4 className="title">Sizes:</h4>
-        {this.createCheckboxes()}
+        {this.createSizeCheckbox()}
+		  <h4 className="title">Colours:</h4>
+        {this.createColoursCheckbox()}
+		  <h4 className="title">Types:</h4>
+        {this.createTypeCheckbox()}
        
       </div>
     );

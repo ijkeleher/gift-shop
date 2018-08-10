@@ -60,7 +60,7 @@ class Shelf extends Component {
         {this.state.loading &&
           <Spinner />
         }
-        <Filter />  
+        <Filter />   
         <div className="shelf-container">
           <ShelfHeader productsLength={products.length}/>
           {p}

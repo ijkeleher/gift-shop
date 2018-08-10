@@ -29,7 +29,7 @@ export const fetchProducts = (filters, sortBy, callback) => dispatch => {
       let { products } = res.data;
 
       if(!!filters && filters.length > 0){
-        products = products.filter( p => filters.find( f => p.availableSizes.find( size => size === f ) ) )
+        products = products.filter( p => filters.find( f => p.tags.find( size => size === f) ) )
       }
 
       if(!!sortBy){

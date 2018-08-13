@@ -68,11 +68,11 @@ class Filter extends Component {
   createSizeCheckbox = () => (
     availableSizes.map(this.createCheckbox)
   )
-  
+
   createColoursCheckbox = () => (
     availableColours.map(this.createCheckbox)
   )
-  
+
   createTypeCheckbox = () => (
     availableTypes.map(this.createCheckbox)
   )
@@ -86,7 +86,7 @@ class Filter extends Component {
         {this.createColoursCheckbox()}
 		  <h4 className="title">Types:</h4>
         {this.createTypeCheckbox()}
-       
+
       </div>
     );
   }

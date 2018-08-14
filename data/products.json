@@ -29,7 +29,7 @@
       "installments": 6,
       "currencyId": "USD",
       "currencyFormat": "$",
-      "isFreeShipping": false
+      "isFreeShipping": true
     },
 
     {
@@ -45,7 +45,7 @@
       "installments": 6,
       "currencyId": "USD",
       "currencyFormat": "$",
-      "isFreeShipping": false
+      "isFreeShipping": true
     },
 
     {
@@ -125,7 +125,7 @@
       "installments": 6,
       "currencyId": "USD",
       "currencyFormat": "$",
-      "isFreeShipping": false
+      "isFreeShipping": true
     },
 
     {
@@ -173,7 +173,7 @@
       "installments": 6,
       "currencyId": "USD",
       "currencyFormat": "$",
-      "isFreeShipping": false
+      "isFreeShipping": true
     },
 
     {
@@ -189,7 +189,7 @@
       "installments": 6,
       "currencyId": "USD",
       "currencyFormat": "$",
-      "isFreeShipping": false
+      "isFreeShipping": true
     },
 
     {
@@ -237,7 +237,7 @@
       "installments": 6,
       "currencyId": "USD",
       "currencyFormat": "$",
-      "isFreeShipping": false
+      "isFreeShipping": true
     },
 
     {

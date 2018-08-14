@@ -12,19 +12,23 @@ const availableSizes = [
   'S',
   'M',
   'L',
-  'XL',
+  'XL'
 ];
 
 const availableGenders = [
   'Male',
   'Female',
-  'Unisex',
+  'Unisex'
 ];
 
 const availableTypes = [
   'Clothes',
   'Toy',
-  'Misc',
+  'Misc'
+];
+
+const availableShipping = [
+  'null'
 ];
 
 class Filter extends Component {
@@ -64,6 +68,10 @@ class Filter extends Component {
     availableTypes.map(this.createCheckbox)
   )
 
+  createShippingCheckbox = () => (
+    availableShipping.map(this.createCheckbox)
+  )
+
   render() {
     return (
       <div className="filters">
@@ -73,6 +81,8 @@ class Filter extends Component {
         {this.createGenderCheckbox()}
 		  <h4 className="title">Types:</h4>
         {this.createTypeCheckbox()}
+      <h4 className="title">Free Shipping:</h4>
+        {this.createShippingCheckbox()}
 
       </div>
     );

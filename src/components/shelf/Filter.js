@@ -18,26 +18,16 @@ const availableSizes = [
   "DM",
 ];
 
-const availableColours = [
-  'Red',
-  'Yellow',
-  'Blue',
-  'Green',
-  'Puple',
-  'Orange',
-  'Black',
-  "White",
+const availableGenders = [
+  'Male',
+  'Female',
+  'Unisex',
 ];
 
 const availableTypes = [
-  'T-Shirts',
-  'Shorts',
-  'Pants',
-  'Hoodies',
-  'Dresses',
-  'Skirts',
-  'Jackets',
-  "Socks",
+  'Clothes',
+  'Toy',
+  'Misc',
 ];
 
 class Filter extends Component {
@@ -49,7 +39,7 @@ class Filter extends Component {
   toggleCheckbox = (label) => {
     if (this.selectedCheckboxes.has(label)) {
       this.selectedCheckboxes.delete(label);
-  } else {
+    } else {
       this.selectedCheckboxes.add(label);
     }
 
@@ -69,8 +59,8 @@ class Filter extends Component {
     availableSizes.map(this.createCheckbox)
   )
 
-  createColoursCheckbox = () => (
-    availableColours.map(this.createCheckbox)
+  createGenderCheckbox = () => (
+    availableGenders.map(this.createCheckbox)
   )
 
   createTypeCheckbox = () => (
@@ -80,10 +70,10 @@ class Filter extends Component {
   render() {
     return (
       <div className="filters">
-        <h4 className="title">Sizes:</h4>
+      <h4 className="title">Sizes:</h4>
         {this.createSizeCheckbox()}
-		  <h4 className="title">Colours:</h4>
-        {this.createColoursCheckbox()}
+		  <h4 className="title">Genders:</h4>
+        {this.createGenderCheckbox()}
 		  <h4 className="title">Types:</h4>
         {this.createTypeCheckbox()}
 

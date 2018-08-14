@@ -27,17 +27,21 @@ export const fetchProducts = (filters, sortBy, callback) => dispatch => {
   axios.get(productsAPI)
     .then(res => {
       let { products } = res.data;
-      let {sizeProducts, colourProducts} = "";
+      let {sizeProducts, genderProducts, typeProducts} = "";
 
       if(!!filters && filters.length > 0){
         sizeProducts = products.filter( p => filters.find( f => p.availableSizes.find( size => size === f) ) )
-        colourProducts = products.filter( p => filters.find( f => p.availableColours.find( size => size === f) ) )
+        genderProducts = products.filter( p => filters.find( f => p.availableGenders.find( size => size === f) ) )
+        typeProducts = products.filter( p => filters.find( f => p.availableTypes.find( size => size === f) ) )
 
         if (Array.isArray(sizeProducts) && sizeProducts.length) {
           products = products.filter( p => filters.find( f => p.availableSizes.find( size => size === f) ) )
         }
-        if (Array.isArray(colourProducts) && colourProducts.length) {
-          products = products.filter( p => filters.find( f => p.availableColours.find( size => size === f) ) )
+        if (Array.isArray(genderProducts) && genderProducts.length) {
+          products = products.filter( p => filters.find( f => p.availableGenders.find( size => size === f) ) )
+        }
+        if (Array.isArray(typeProducts) && typeProducts.length) {
+          products = products.filter( p => filters.find( f => p.availableTypes.find( size => size === f) ) )
         }
       }
 

@@ -87,22 +87,23 @@ class FloatCart extends Component {
 
   applyDiscount = (event) => {
     const { totalPrice, twentyoffDiscount } = this.props.cartTotals;
+    event.preventDefault();
 
-    if (this.state.value === "20off" && !twentyoffDiscount) {
+    if (this.state.value === "20OFF" && !twentyoffDiscount) {
       this.props.cartTotals.twentyoffDiscount = true;
       this.props.cartTotals.totalPrice = totalPrice*0.80;
       this.setState({totalPrice});
+    } else if  (twentyoffDiscount) {
+      alert("Code has already been entered!");
+    } else {
+      alert("Invalid code!");
     }
-    event.preventDefault();
   }
 
-  handleChange = (event) => {
+  handleChange = (event) =>
     this.setState({value: event.target.value});
-  }
-/*
-  refreshTotalPrice = () =>
-    this.setState({refreshTotalPrice: !this.state.refreshTotalPrice})
-*/
+
+
   render() {
     const { cartTotals, cartProducts, removeProduct } = this.props;
 
@@ -201,10 +202,10 @@ class FloatCart extends Component {
                 )}
               </small>
             </div>
-            <div  className="coup-btn">
+            <div className="coup-btn">
               <form onSubmit={this.applyDiscount}>
-                <input type="text" name="coupon" onChange={this.handleChange}></input>
-                <input type="submit" value="Enter Coupon"></input>
+                <input className="coup-text" type="text" name="coupon" onChange={this.handleChange}></input>
+                <input className="coup-submit" type="submit" value="Enter Coupon"></input>
               </form>
             </div>
             <div onClick={() => this.proceedToCheckout()} className="buy-btn">

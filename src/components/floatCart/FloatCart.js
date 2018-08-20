@@ -13,7 +13,7 @@ import util from '../../util';
 
 
 class FloatCart extends Component {
-  
+
   state = {
     isOpen: false,
   };
@@ -77,11 +77,13 @@ class FloatCart extends Component {
 
   proceedToCheckout = () => {
     const { totalPrice, productQuantity, currencyFormat, currencyId } = this.props.cartTotals;
-
+    const { cartProducts, updateCart } = this.props;
     if (!productQuantity) {
       alert("Add some products to the cart!");
     }else {
       alert(`Checkout - Subtotal: ${currencyFormat} ${util.formatPrice(totalPrice, currencyId)}`);
+      cartProducts.length = 0;
+      updateCart(cartProducts);
     }
   }
 
@@ -126,7 +128,7 @@ class FloatCart extends Component {
           </span>
         )}
 
-		
+
 		{!this.state.isOpen && cartTotals.productQuantity>99 &&(
           <span
             onClick={() => this.openFloatCart()}
@@ -135,8 +137,8 @@ class FloatCart extends Component {
             <span className="bag__quantity">{99}+</span>
           </span>
         )}
-		
-		
+
+
         <div className="float-cart__content">
 		{cartTotals.productQuantity<99 &&(
 		  <div className="float-cart__header">
@@ -148,7 +150,7 @@ class FloatCart extends Component {
             <span className="header-title">Bag</span>
           </div>
 		)}
-		
+
 		{cartTotals.productQuantity>99 &&(
 		  <div className="float-cart__header">
             <span className="bag">
@@ -210,4 +212,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { loadCart, updateCart, removeProduct})(FloatCart);
-

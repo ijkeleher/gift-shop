@@ -13,7 +13,7 @@ import util from '../../util';
 
 
 class FloatCart extends Component {
-  
+
   state = {
     isOpen: false,
   };
@@ -76,7 +76,7 @@ class FloatCart extends Component {
   }
 
   proceedToCheckout = () => {
-    const { totalPrice, productQuantity, currencyFormat, currencyId } = this.props.cartTotals;
+    const { totalPrice, twentyoffDiscount, productQuantity, currencyFormat, currencyId } = this.props.cartTotals;
 
     if (!productQuantity) {
       alert("Add some products to the cart!");
@@ -85,6 +85,24 @@ class FloatCart extends Component {
     }
   }
 
+  applyDiscount = (event) => {
+    const { totalPrice, twentyoffDiscount } = this.props.cartTotals;
+
+    if (this.state.value === "20off" && !twentyoffDiscount) {
+      this.props.cartTotals.twentyoffDiscount = true;
+      this.props.cartTotals.totalPrice = totalPrice*0.80;
+      this.setState({totalPrice});
+    }
+    event.preventDefault();
+  }
+
+  handleChange = (event) => {
+    this.setState({value: event.target.value});
+  }
+/*
+  refreshTotalPrice = () =>
+    this.setState({refreshTotalPrice: !this.state.refreshTotalPrice})
+*/
   render() {
     const { cartTotals, cartProducts, removeProduct } = this.props;
 
@@ -126,7 +144,7 @@ class FloatCart extends Component {
           </span>
         )}
 
-		
+
 		{!this.state.isOpen && cartTotals.productQuantity>99 &&(
           <span
             onClick={() => this.openFloatCart()}
@@ -135,8 +153,8 @@ class FloatCart extends Component {
             <span className="bag__quantity">{99}+</span>
           </span>
         )}
-		
-		
+
+
         <div className="float-cart__content">
 		{cartTotals.productQuantity<99 &&(
 		  <div className="float-cart__header">
@@ -148,7 +166,7 @@ class FloatCart extends Component {
             <span className="header-title">Bag</span>
           </div>
 		)}
-		
+
 		{cartTotals.productQuantity>99 &&(
 		  <div className="float-cart__header">
             <span className="bag">
@@ -183,6 +201,12 @@ class FloatCart extends Component {
                 )}
               </small>
             </div>
+            <div  className="coup-btn">
+              <form onSubmit={this.applyDiscount}>
+                <input type="text" name="coupon" onChange={this.handleChange}></input>
+                <input type="submit" value="Enter Coupon"></input>
+              </form>
+            </div>
             <div onClick={() => this.proceedToCheckout()} className="buy-btn">
               Checkout
             </div>
@@ -210,4 +234,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { loadCart, updateCart, removeProduct})(FloatCart);
-

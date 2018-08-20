@@ -14,16 +14,19 @@ export const updateCart = (cartProducts) => dispatch => {
     return sum;
   }, 0);
 
+  let twentyoffDiscount = false;
+
   let installments = cartProducts.reduce((greater, p) => {
     greater = p.installments > greater ? p.installments : greater;
     return greater;
   }, 0);
-  
+
 
   let cartTotals = {
     productQuantity,
     installments,
     totalPrice,
+    twentyoffDiscount,
     currencyId: 'USD',
     currencyFormat: '$',
   }

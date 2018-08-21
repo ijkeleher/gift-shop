@@ -95,7 +95,7 @@ class FloatCart extends Component {
       this.state.coupSuccess = true;
       this.props.cartTotals.totalPrice = totalPrice*0.80;
       this.setState({totalPrice});
-    } else if  (twentyoffDiscount) {
+    } else if  (this.state.value === "20OFF" && twentyoffDiscount) {
       alert("Code has already been entered!");
     } else {
       alert("Invalid code!");

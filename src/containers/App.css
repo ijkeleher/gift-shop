@@ -347,8 +347,7 @@ footer {
         background-color: #bd0021; }
     .float-cart__footer .coup-btn {
       text-align: center;
-      margin-top: 15px;
-      padding: 15px 0; }
+      margin-top: 15px; }
     .float-cart__footer .coup-btn .coup-text {
       width: 63%;
       padding: 10px; }
@@ -356,6 +355,10 @@ footer {
       padding: 10px;
       width: 30%;
       cursor: pointer; }
+    .float-cart__footer .coup-msg {
+      padding: 0px;
+      color: white;
+      }
 
 
 @media only screen and (max-width: 1024px) {

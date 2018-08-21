@@ -16,6 +16,7 @@ class FloatCart extends Component {
 
   state = {
     isOpen: false,
+    coupSuccess: false,
   };
 
   componentWillMount() {
@@ -76,7 +77,7 @@ class FloatCart extends Component {
   }
 
   proceedToCheckout = () => {
-    const { totalPrice, twentyoffDiscount, productQuantity, currencyFormat, currencyId } = this.props.cartTotals;
+    const { totalPrice, productQuantity, currencyFormat, currencyId } = this.props.cartTotals;
 
     if (!productQuantity) {
       alert("Add some products to the cart!");
@@ -91,6 +92,7 @@ class FloatCart extends Component {
 
     if (this.state.value === "20OFF" && !twentyoffDiscount) {
       this.props.cartTotals.twentyoffDiscount = true;
+      this.state.coupSuccess = true;
       this.props.cartTotals.totalPrice = totalPrice*0.80;
       this.setState({totalPrice});
     } else if  (twentyoffDiscount) {
@@ -208,6 +210,13 @@ class FloatCart extends Component {
                 <input className="coup-submit" type="submit" value="Enter Coupon"></input>
               </form>
             </div>
+            {this.state.coupSuccess &&(
+              <div className="coup-msg">
+                <p>
+                  Coupon accepted, 20% has been taken off your price.
+                </p>
+              </div>
+            )}
             <div onClick={() => this.proceedToCheckout()} className="buy-btn">
               Checkout
             </div>

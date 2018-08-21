@@ -14,16 +14,24 @@ class EditProduct extends Component {
   }
 
   editItem = (e) => {
-    e.preventDefault();
+    //e.preventDefault();
     console.log(this.state.data);
-    var userWord = document.getElementById("word").value;
+    //var userWord = document.getElementById("word").value;
     var userNum = document.getElementById("number").value;
+    var index = 0;
+    console.log("title is: " + this.props.title);
+    console.log(this.state.data.products[0].title);
+    console.log(this.state.data.products.length);
 
-    fetch(`http://localhost:8001/api/products/edit/${userWord}/${userNum}?`);
-  }
-
-  gotData = (data) =>{
-    console.log(data)
+    for (var i=0; i < this.state.data.products.length; i++) {
+      console.log(i);
+      if (this.state.data.products[i].title.localeCompare(this.props.title)===0) {
+        index = i;
+        console.log("index is: " + index);
+        fetch(`http://localhost:8001/api/products/edit/${index}/${userNum}?`);
+ 
+      }
+    }
   }
 
 
@@ -32,7 +40,6 @@ class EditProduct extends Component {
     return(
       <div>
         <form onSubmit = {this.editItem}>
-          <input type="text" id="word"/>
           <input type="text" id="number"/>
           <button>Go</button>
         </form>

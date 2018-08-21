@@ -21,23 +21,40 @@ app.get(routes.products.get, function (req, res) {
 });
 
 var fs = require('fs');
-var data = fs.readFileSync('fred.json');
-var words = JSON.parse(data);
-console.log(words);
+//var data = fs.readFileSync('fred.json');
+//var words = JSON.parse(data);
+//console.log(words);
+
+var prod = fs.readFileSync(__dirname + '/data/products.json');
+var products = JSON.parse(prod);
+//console.log(products.products[0].price);
+
 
 app.get('/api/products/hello', (req, res) => {
 	res.send(words);
 });
 
+app.get('/api/products/write/:products', writeFile);
+
+function writeFile(request, response){
+	var cart = request.params;
+	cart = JSON.stringify(cart, null, 2);
+	fs.writeFile(__dirname + '/data/checkout.txt', cart, finished);
+	function finished(err){
+		console.log("all set");
+	}
+}
+
 app.get('/api/products/edit/:word/:replace?', editWord);
 
 function editWord(request, response){
 	var data = request.params;
-	var word = data.word;
+	var word = Number(data.word);
 	var replace = Number(data.replace);
-	words[word]=replace;
-	var data = JSON.stringify(words, null, 2);
-	fs.writeFile('fred.json', data, finished);
+	products.products[word].price = replace;
+	//words[word]=replace;
+	var data = JSON.stringify(products, null, 2);
+	fs.writeFile(__dirname + '/data/products.json', data, finished);
 	function finished(err){
 		console.log("all set");
 	}

@@ -81,7 +81,13 @@ class FloatCart extends Component {
     if (!productQuantity) {
       alert("Add some products to the cart!");
     }else {
-      alert(`Checkout - Subtotal: ${currencyFormat} ${util.formatPrice(totalPrice, currencyId)}`);
+      alert(`Checkout - Subtotal: ${currencyFormat} ${util.formatPrice(totalPrice, currencyId)}`);     
+      var productDetails = '\n';
+      for(var i = 0; i<this.props.cartProducts.length; i++){
+        productDetails = productDetails + this.props.cartProducts[i].title + ','; 
+      }
+      productDetails = productDetails + this.props.cartTotals.totalPrice;
+      fetch(`http://localhost:8001/api/products/write/${productDetails}`);
     }
   }
 

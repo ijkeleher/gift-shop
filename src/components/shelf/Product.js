@@ -69,7 +69,7 @@ class Product extends React.Component {
         </div>
         <div onClick = {this.editItemMenu}>Edit</div>
         {this.state.showEditMenu ?
-            <EditProduct id={this.props.product.id}/> :
+            <EditProduct title={this.props.product.title}/> :
             null
           }
         <div onClick={() => this.props.addProduct(this.props.product)} className="shelf-item__buy-btn">Add to cart</div>

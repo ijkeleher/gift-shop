@@ -39,7 +39,7 @@ app.get('/api/products/write/:products', writeFile);
 function writeFile(request, response){
 	var cart = request.params;
 	cart = JSON.stringify(cart, null, 2);
-	fs.writeFile(__dirname + '/data/checkout.txt', cart, finished);
+	fs.appendFile(__dirname + '/data/checkout.txt', cart, finished);
 	function finished(err){
 		console.log("all set");
 	}

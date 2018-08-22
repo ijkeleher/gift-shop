@@ -13,9 +13,10 @@ import util from '../../util';
 
 
 class FloatCart extends Component {
-  
+
   state = {
     isOpen: false,
+    coupSuccess: false,
   };
 
   componentWillMount() {
@@ -77,19 +78,48 @@ class FloatCart extends Component {
 
   proceedToCheckout = () => {
     const { totalPrice, productQuantity, currencyFormat, currencyId } = this.props.cartTotals;
-
+    const { cartProducts, updateCart } = this.props;
     if (!productQuantity) {
       alert("Add some products to the cart!");
-    }else {
-      alert(`Checkout - Subtotal: ${currencyFormat} ${util.formatPrice(totalPrice, currencyId)}`);     
-      var productDetails = '\n';
-      for(var i = 0; i<this.props.cartProducts.length; i++){
-        productDetails = productDetails + this.props.cartProducts[i].title + ','; 
-      }
-      productDetails = productDetails + this.props.cartTotals.totalPrice;
-      fetch(`http://localhost:8001/api/products/write/${productDetails}`);
+    }
+    else {
+      this.writeToFile();
+      alert(`Checkout - Subtotal: ${currencyFormat} ${util.formatPrice(totalPrice, currencyId)}`);      
+      cartProducts.length = 0;
+      updateCart(cartProducts);
     }
   }
+
+  writeToFile = () => {
+
+    var productDetails = '\n';
+    for(var i = 0; i<this.props.cartProducts.length; i++){
+      productDetails = productDetails + this.props.cartProducts[i].title + ','; 
+    }
+    productDetails = productDetails + this.props.cartTotals.totalPrice;
+    fetch(`http://localhost:8001/api/products/write/${productDetails}`);
+
+  }
+
+  applyDiscount = (event) => {
+    const { totalPrice, twentyoffDiscount } = this.props.cartTotals;
+    event.preventDefault();
+
+    if (this.state.value === "20OFF" && !twentyoffDiscount) {
+      this.props.cartTotals.twentyoffDiscount = true;
+      this.state.coupSuccess = true;
+      this.props.cartTotals.totalPrice = totalPrice*0.80;
+      this.setState({totalPrice});
+    } else if  (this.state.value === "20OFF" && twentyoffDiscount) {
+      alert("Code has already been entered!");
+    } else {
+      alert("Invalid code!");
+    }
+  }
+
+  handleChange = (event) =>
+    this.setState({value: event.target.value});
+
 
   render() {
     const { cartTotals, cartProducts, removeProduct } = this.props;
@@ -132,7 +162,7 @@ class FloatCart extends Component {
           </span>
         )}
 
-		
+
 		{!this.state.isOpen && cartTotals.productQuantity>99 &&(
           <span
             onClick={() => this.openFloatCart()}
@@ -141,8 +171,8 @@ class FloatCart extends Component {
             <span className="bag__quantity">{99}+</span>
           </span>
         )}
-		
-		
+
+
         <div className="float-cart__content">
 		{cartTotals.productQuantity<99 &&(
 		  <div className="float-cart__header">
@@ -154,7 +184,7 @@ class FloatCart extends Component {
             <span className="header-title">Bag</span>
           </div>
 		)}
-		
+
 		{cartTotals.productQuantity>99 &&(
 		  <div className="float-cart__header">
             <span className="bag">
@@ -189,6 +219,19 @@ class FloatCart extends Component {
                 )}
               </small>
             </div>
+            <div className="coup-btn">
+              <form onSubmit={this.applyDiscount}>
+                <input className="coup-text" type="text" name="coupon" onChange={this.handleChange}></input>
+                <input className="coup-submit" type="submit" value="Enter Coupon"></input>
+              </form>
+            </div>
+            {this.state.coupSuccess &&(
+              <div className="coup-msg">
+                <p>
+                  Coupon accepted, 20% has been taken off your price.
+                </p>
+              </div>
+            )}
             <div onClick={() => this.proceedToCheckout()} className="buy-btn">
               Checkout
             </div>
@@ -216,4 +259,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { loadCart, updateCart, removeProduct})(FloatCart);
-

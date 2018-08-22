@@ -40,7 +40,7 @@ class EditProduct extends Component {
     return(
       <div>
         <form onSubmit = {this.editItem}>
-          <input type="text" id="number"/>
+          <input type="number" id="number"/>
           <button>Go</button>
         </form>
       </div>

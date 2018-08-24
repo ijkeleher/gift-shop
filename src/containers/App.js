@@ -11,6 +11,7 @@ import FloatCart from './../components/floatCart/FloatCart';
 import store from '../store';
 import Corner from '../components/github/Corner';
 
+import Alert from 'react-s-alert';
 
 class App extends Component {
   render() {
@@ -23,6 +24,13 @@ class App extends Component {
           </main>
           <Footer />
           <FloatCart />
+          /* default alert template */
+          <div>
+            <span>
+              {this.props.children}
+            </span>
+            <Alert stack={{limit: 3}} />
+          </div>
         </div>
       </Provider>
     )

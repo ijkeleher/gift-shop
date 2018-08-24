@@ -359,6 +359,16 @@ footer {
       padding: 0px;
       color: white;
       }
+    .coup-submit {
+      background-color: #000054;
+      border: #000054;
+      color: #fff;
+      transition: background-color 0.2s;
+    }
+    .coup-submit:hover {
+      background-color: #eabf00;
+    }
+
 
 
 @media only screen and (max-width: 1024px) {

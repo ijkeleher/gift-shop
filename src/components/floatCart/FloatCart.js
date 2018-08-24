@@ -11,6 +11,11 @@ import persistentCart from "../../persistentCart";
 
 import util from '../../util';
 
+// This is to add some custom alert boxes to the checkout section
+import Alert from 'react-s-alert';
+//import 'react-s-alert/dist/s-alert-default.css'
+import '../../containers/DefaultAlertStyle.css';
+import 'react-s-alert/dist/s-alert-css-effects/jelly.css';
 
 class FloatCart extends Component {
 
@@ -80,9 +85,10 @@ class FloatCart extends Component {
     const { totalPrice, productQuantity, currencyFormat, currencyId } = this.props.cartTotals;
     const { cartProducts, updateCart } = this.props;
     if (!productQuantity) {
-      alert("Add some products to the cart!");
-    }else {
-      alert(`Checkout - Subtotal: ${currencyFormat} ${util.formatPrice(totalPrice, currencyId)}`);
+      Alert.info("Add some products to the cart!", {effect: 'jelly'});
+    } else {
+      Alert.success(`Checkout - Subtotal: ${currencyFormat} ${util.formatPrice(totalPrice, currencyId)}`,
+        {effect: 'jelly'});
       cartProducts.length = 0;
       updateCart(cartProducts);
     }
@@ -98,9 +104,9 @@ class FloatCart extends Component {
       this.props.cartTotals.totalPrice = totalPrice*0.80;
       this.setState({totalPrice});
     } else if  (this.state.value === "20OFF" && twentyoffDiscount) {
-      alert("Code has already been entered!");
+      Alert.error("Code has already been entered!", {effect: 'jelly'});
     } else {
-      alert("Invalid code!");
+      Alert.error("Invalid code!", {effect: 'jelly'});
     }
   }
 

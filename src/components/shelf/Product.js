@@ -67,11 +67,17 @@ class Product extends React.Component {
           </div>
           {productInstallment}
         </div>
+        {localStorage.getItem("isLoggedIn") && 
         <div onClick = {this.editItemMenu}>Edit</div>
+        }
         {this.state.showEditMenu ?
             <EditProduct title={this.props.product.title}/> :
             null
-          }
+        }
+
+
+
+
         <div onClick={() => this.props.addProduct(this.props.product)} className="shelf-item__buy-btn">Add to cart</div>
       </div>
     );

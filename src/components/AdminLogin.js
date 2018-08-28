@@ -2,26 +2,46 @@ import React, { Component } from 'react';
 
 class AdminLogin extends Component {
 
-  checkLoggedIn = (e) => {
-    e.preventDefault();
+  logOut = () =>{
+    localStorage.clear();
+  }
+
+  logIn = () =>{
+
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
-
-    console.log("username is: " + username);
-    console.log("password is: " + password);
-
+    
     if( (username.localeCompare("admin") === 0) && (password.localeCompare("admin") === 0)){
+      localStorage.setItem("isLoggedIn", true)
+      console.log("local storage in check is: " + localStorage.getItem("isLoggedIn"));
       this.props.login(true);
+
+    }
+    else{
+      localStorage.setItem("isLoggedIn", false)
     }
   }
-  render() {    
+
+  render() {
+    const loggedIn = localStorage.getItem("isLoggedIn");
+
     return(       
       <div>
-        <form onSubmit = {this.checkLoggedIn}>
-          <input type="text" placeholder="username" id="username"/>
-          <input type="password" placeholder="password" id="password"/>
-          <button>Login</button>
-        </form>
+        {loggedIn===null || loggedIn===false ? (
+          <form onSubmit={this.logIn}>
+            <input type="text" placeholder="username" id="username"/>
+            <input type="password" placeholder="password" id="password"/>
+            <button>Login</button>
+          </form>
+        ):
+        (
+          <div>
+            <div className="logged-in">Logged in as Admin</div>
+            <form onSubmit={this.logOut}>
+              <button>Logout</button>
+            </form>
+          </div>          
+        )}
       </div>
     );
   }

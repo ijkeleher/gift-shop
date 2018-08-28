@@ -14,23 +14,7 @@ import AdminLogin from '../components/AdminLogin';
 
 
 class App extends Component {
-
-  state = {
-    admin: false
-  } 
-  isLoggedIn = (boolean) => {
-    this.setState({
-      admin: boolean
-    })
-  }
-
   render() {
-    const loggedIn = this.state.admin;
-    let greeting;
-    console.log("admin is " + loggedIn);
-    if(loggedIn){
-        greeting = <div>LOGGED IN</div>
-    }
     return (
       <Provider store={store}>
         <div className="App">
@@ -40,8 +24,7 @@ class App extends Component {
           </main>
           <Footer />
           <FloatCart />
-          <AdminLogin login={this.isLoggedIn}/>
-          {greeting}
+          <AdminLogin/>
         </div>
       </Provider>
     )

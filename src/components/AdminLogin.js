@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 
 class AdminLogin extends Component {
 
+  state=({
+    showLoginMenu: false
+  });
+
+
   logOut = () =>{
     localStorage.clear();
   }
@@ -13,32 +18,54 @@ class AdminLogin extends Component {
     
     if( (username.localeCompare("admin") === 0) && (password.localeCompare("admin") === 0)){
       localStorage.setItem("isLoggedIn", true)
-      console.log("local storage in check is: " + localStorage.getItem("isLoggedIn"));
-      this.props.login(true);
-
     }
     else{
-      localStorage.setItem("isLoggedIn", false)
+      localStorage.clear();
     }
   }
 
-  render() {
+  showLoginMenu = () => {
+    console.log("its been clicked");
+    if(this.state.showLoginMenu === false){
+      this.setState({
+        showLoginMenu: true 
+      });
+    }
+    else{
+      this.setState({
+        showLoginMenu: false 
+      });
+    }
+  }
+
+  renderLogin = () =>{
+    return [
+      (this.state.showLoginMenu &&       
+        <form className="admin-login-form" onSubmit={this.logIn} key={1}>
+          <input type="text" autocomplete="off" placeholder="username" id="username"/>
+          <input type="password" autocomplete="off" placeholder="password" id="password"/>
+          <button>Login</button>
+        </form>)
+    ];
+  }
+
+  render() {    
     const loggedIn = localStorage.getItem("isLoggedIn");
 
     return(       
       <div>
-        {loggedIn===null || loggedIn===false ? (
-          <form onSubmit={this.logIn}>
-            <input type="text" placeholder="username" id="username"/>
-            <input type="password" placeholder="password" id="password"/>
-            <button>Login</button>
-          </form>
+
+        {(loggedIn===null || loggedIn===false) ? (
+          <div>
+            <button className="admin-login-button" onClick={this.showLoginMenu}>Admin Login</button>
+            <div className="admin-login">{this.renderLogin()}</div>
+          </div>
         ):
         (
           <div>
             <div className="logged-in">Logged in as Admin</div>
             <form onSubmit={this.logOut}>
-              <button>Logout</button>
+              <button className="log-out-button">Log out</button>
             </form>
           </div>          
         )}

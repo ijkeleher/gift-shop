@@ -4,6 +4,102 @@ body {
   color: #1b1a20;
   font-family: 'Roboto', sans-serif; }
 
+.logged-in{
+  background-color: #eabf00;
+  color: #000054;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: calc(100% - 60px);
+  height: 60px;
+  vertical-align: middle;
+  line-height: 60px; 
+  padding-left: 68px;
+  font-size: 18px;
+}
+
+.log-out-button{
+  position: fixed;
+  top: 15px;
+  left: 250px;
+  background-color: #000054;
+  color: white;
+  border: none;
+  font: inherit;
+  font-size: 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  outline: inherit;
+  height: 30px;
+  width: 100px;
+}
+
+.log-out-button:hover{
+  background-color: #e60028;
+}
+
+.admin-login-button{
+  display: inline-block;
+  margin-left: 270px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  background-color: #000054;
+  color: white;
+  border: none;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  outline: inherit;
+  height: 40px;
+  width: 120px; 
+}
+
+.admin-login-button:hover{
+  background-color: #eabf00;
+}
+
+.admin-login{
+  display:inline-block;
+  margin-left: 50px;
+}
+
+.admin-login-form{
+  display:inline-block;  
+}
+.admin-login-form input{
+  width: 120px;
+  height: 35px;
+  margin-left: 10px;
+  padding-left: 10px;
+  border-color: #000054;
+  border-width: 1px;
+  font-family: inherit;  
+}
+
+.admin-login-form button{
+  background-color: #000054;
+  color: white;
+  border: none;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  outline: inherit;
+  height: 40px;
+  width: 120px;
+  margin-left: 20px;
+}
+.admin-login-form button:hover{
+  background-color: #eabf00;
+
+}
+.github-corner{
+  top: 40px;
+  left: 46px;
+  position: relative;
+  z-index: -1;
+}
+
 main {
   padding: 20px 2%;
   max-width: 1200px;
@@ -190,6 +286,7 @@ footer {
   right: -450px;
   width: 450px;
   height: 100%;
+  z-index: 100;
   background-color: #0078ff;
   box-sizing: border-box;
   transition: right 0.2s; }

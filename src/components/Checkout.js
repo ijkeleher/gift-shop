@@ -58,58 +58,63 @@ class Checkout extends Component {
       <div>
         {this.props.checkoutIsOpen &&(
 
-          <div id="myModal" className="modal">
+          <div className="checkoutModal">
 
-          <div className="modal-content">
-            <span className="close" onClick={this.closeCheckout}>&times;</span>
+          <div className="checkoutModal-content">
+            <span className="close-btn" onClick={this.closeCheckout}>&times;</span>
             <div>
               <form onSubmit={() => this.proceedToCheckout()}>
-                <p>Delivery Information:</p>
-                <p>Full Name</p>
-                <input type="text" required></input>
-                <p>Email</p>
-                <input type="email" required></input>
-                <p>Address</p>
-                <input type="text" required></input>
-                <p>City</p>
-                <input type="text" required></input>
-                <p>Zip</p>
-                <input type="text" pattern="[0-9]{4}"
-                  title="A zip code consists of four digits." required></input>
-                <p>State</p>
-                <input type="text" required></input>
-                <p>Payment Information:</p>
-                <p>Name as it appears on card</p>
-                <input type="text" required></input>
-                <p>Credit card number</p>
-                <input type="text" pattern="([0-9]{4}[-]){3}[0-9]{4}" required></input>
-                <p>Expiry</p>
-                <input type="month" required></input>
-                <p>CVV</p>
-                <input type="number" pattern="[0-9]{3}"  required></input>
-                <p></p>
-                <div className="coup-btn">
-                <input className="coup-text" type="text" name="coupon" onChange={this.handleChange}></input>
-                <button type="Button" onClick={this.applyDiscount}>Enter Coupon</button>
+                <h3 className="delivInfo-header">Delivery Information:</h3>
+                <div className="delivInfo-content">
+                  <p>Full Name</p>
+                  <input type="text" required></input>
+                  <p>Email</p>
+                  <input type="email" required></input>
+                  <p>Address</p>
+                  <input type="text" required></input>
+                  <p>City</p>
+                  <input type="text" required></input>
+                  <p>Zip</p>
+                  <input type="text" pattern="[0-9]{4}"
+                    title="A zip code consists of four digits." required></input>
+                  <p>State</p>
+                  <input type="text" required></input>
                 </div>
-                {this.state.coupSuccess &&(
-                  <div className="coup-msg">
-                    <p>
-                      Coupon accepted, 20% has been taken off your price.
+                <h3 className="payInfo-header">Payment Information:</h3>
+                <div className="payInfo-content">
+                  <p>Name as it appears on card</p>
+                  <input type="text" required></input>
+                  <p>Credit card number</p>
+                  <input type="text" pattern="([0-9]{4}[-]){3}[0-9]{4}"
+                    title="A credit card must be in the form &quot;XXXX-XXXX-XXXX-XXXX&quot;" required></input>
+                  <p>Expiry</p>
+                  <input type="month" required></input>
+                  <p>CVV</p>
+                  <input type="number" pattern="[0-9]{3}"
+                    title="Your CVV is the three digit code on the back of your card"  required></input>
+                </div>
+                <div className="checkoutModal-footer">
+                  <div className="sub">SUBTOTAL</div>
+                    <div className="sub-price">
+                    <p className="sub-price__val">
+                      {`${cartTotals.currencyFormat} ${util.formatPrice(cartTotals.totalPrice, cartTotals.currencyId)}`}
                     </p>
+                    </div>
+                    <div className="coup-btn">
+                      <input className="coup-text" type="text" name="coupon" onChange={this.handleChange}></input>
+                      <button className="coup-submit" type="Button" onClick={this.applyDiscount}>Enter Coupon</button>
+                    </div>
+                    {this.state.coupSuccess &&(
+                      <div className="coup-msg">
+                        <p>
+                          Coupon accepted, 20% has been taken off your price.
+                        </p>
+                      </div>
+                    )}
+
+                      <input className="buy-btn" type="submit" value="Checkout"></input>
+                    
                   </div>
-                )}
-
-                <div className="sub">SUBTOTAL</div>
-                <div className="sub-price">
-                  <p className="sub-price__val">
-                    {`${cartTotals.currencyFormat} ${util.formatPrice(cartTotals.totalPrice, cartTotals.currencyId)}`}
-                  </p>
-                </div>
-
-                <div className="buy-btn">
-                  <input type="submit" value="Checkout"></input>
-                </div>
               </form>
             </div>
           </div>

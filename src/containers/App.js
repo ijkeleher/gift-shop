@@ -27,7 +27,6 @@ class App extends Component {
           </main>
           <Footer />
           <FloatCart />
-          /* default alert template */
           <div>
             <span>
               {this.props.children}

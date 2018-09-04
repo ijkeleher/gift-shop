@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import Shelf from '../components/shelf/Shelf';
 import Footer from '../components/Footer';
 import FloatCart from './../components/floatCart/FloatCart';
+import Checkout from '../components/Checkout';
 
 import store from '../store';
 import Corner from '../components/github/Corner';
@@ -19,6 +20,7 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <Corner />
+          <Checkout />
           <main>
             <Shelf />
           </main>

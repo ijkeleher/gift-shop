@@ -9,3 +9,7 @@ export const UPDATE_CART = 'UPDATE_CART';
 export const UPDATE_FILTER = 'UPDATE_FILTER';
 // Sort
 export const UPDATE_SORT = 'UPDATE_SORT';
+// Checkout
+export const SHOW_CHECKOUT = 'SHOW_CHECKOUT';
+export const OPEN_CHECKOUT = 'OPEN_CHECKOUT';
+export const CLOSE_CHECKOUT = 'CLOSE_CHECKOUT';

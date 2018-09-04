@@ -4,6 +4,102 @@ body {
   color: #1b1a20;
   font-family: 'Roboto', sans-serif; }
 
+.logged-in{
+  background-color: #eabf00;
+  color: #000054;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: calc(100% - 60px);
+  height: 60px;
+  vertical-align: middle;
+  line-height: 60px;
+  padding-left: 68px;
+  font-size: 18px;
+}
+
+.log-out-button{
+  position: fixed;
+  top: 15px;
+  left: 250px;
+  background-color: #000054;
+  color: white;
+  border: none;
+  font: inherit;
+  font-size: 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  outline: inherit;
+  height: 30px;
+  width: 100px;
+}
+
+.log-out-button:hover{
+  background-color: #e60028;
+}
+
+.admin-login-button{
+  display: inline-block;
+  margin-left: 270px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  background-color: #000054;
+  color: white;
+  border: none;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  outline: inherit;
+  height: 40px;
+  width: 120px;
+}
+
+.admin-login-button:hover{
+  background-color: #eabf00;
+}
+
+.admin-login{
+  display:inline-block;
+  margin-left: 50px;
+}
+
+.admin-login-form{
+  display:inline-block;
+}
+.admin-login-form input{
+  width: 120px;
+  height: 35px;
+  margin-left: 10px;
+  padding-left: 10px;
+  border-color: #000054;
+  border-width: 1px;
+  font-family: inherit;
+}
+
+.admin-login-form button{
+  background-color: #000054;
+  color: white;
+  border: none;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  outline: inherit;
+  height: 40px;
+  width: 120px;
+  margin-left: 20px;
+}
+.admin-login-form button:hover{
+  background-color: #eabf00;
+
+}
+.github-corner{
+  top: 40px;
+  left: 46px;
+  position: relative;
+  z-index: -1;
+}
+
 main {
   padding: 20px 2%;
   max-width: 1200px;
@@ -190,6 +286,7 @@ footer {
   right: -450px;
   width: 450px;
   height: 100%;
+  z-index: 100;
   background-color: #0078ff;
   box-sizing: border-box;
   transition: right 0.2s; }
@@ -345,19 +442,16 @@ footer {
       transition: background-color 0.2s; }
       .float-cart__footer .buy-btn:hover {
         background-color: #bd0021; }
-    .float-cart__footer .coup-btn {
-      text-align: center;
-      margin-top: 15px; }
-    .float-cart__footer .coup-btn .coup-text {
-      width: 63%;
-      padding: 10px; }
-    .float-cart__footer .coup-btn .coup-submit {
-      padding: 10px;
-      width: 30%;
-      cursor: pointer; }
-    .float-cart__footer .coup-msg {
-      padding: 0px;
-      color: white;
+
+      .checkoutModal {
+          display: block;
+          position: fixed;
+          z-index: 9999999;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgba(0,0,0,0.4);
       }
     .coup-submit {
       background-color: #000054;
@@ -369,6 +463,103 @@ footer {
       background-color: #eabf00;
     }
 
+
+      .checkoutModal-content {
+          background-color: #eabf00;
+          margin: 5% auto;
+          padding: 20px;
+          padding-top: 10px;
+          border: 1px solid #888;
+          width: 50%;
+      }
+
+      .checkoutModal-content input[type=number]::-webkit-inner-spin-button,
+      .checkoutModal-content input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      .checkoutModal-content input[type=month]::-webkit-inner-spin-button,
+      .checkoutModal-content input[type=month]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      .checkoutModal-content .close-btn {
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+      }
+
+      .checkoutModal-content .close-btn:hover,
+      .checkoutModal-content .close-btn:focus {
+          color: black;
+          text-decoration: none;
+          cursor: pointer;
+      }
+
+      .checkoutModal-content .delivInfo-content p,
+      .checkoutModal-content .payInfo-content p {
+        margin: 2px;
+      }
+
+      .checkoutModal-content .delivInfo-header,
+      .checkoutModal-content .payInfo-header {
+        margin: 20px;
+        margin-bottom: 5px;
+      }
+
+      .checkoutModal-content .delivInfo-content,
+      .checkoutModal-content .payInfo-content {
+        padding: 0px 10px 15px 30px;
+        border-bottom: 2px solid #a78800;
+      }
+
+      .checkoutModal-content .coup-btn {
+        text-align: center;
+        margin-top: 15px;}
+      .checkoutModal-content .coup-btn .coup-text {
+        width: 63%;
+        padding: 10px 0px 10px 10px; }
+      .checkoutModal-content .coup-btn .coup-submit {
+        padding: 10px 0px 10px 0px;
+        width: 33%;
+        cursor: pointer; }
+      .checkoutModal-content .coup-msg {
+        padding: 0px;
+        color: white;
+        }
+
+      .checkoutModal-content .sub {
+        color: #ececec;
+        width: 20%;
+        margin-top: 20px;
+        margin-left: 20px;}
+      .checkoutModal-content .sub-price {
+        width: 80%;
+        text-align: right; }
+        .checkoutModal-content .sub-price__val, .float-cart__footer .sub-price__installment {
+          margin: 0; }
+        .checkoutModal-content .sub-price__val {
+          color: #e60028;
+          font-size: 22px; }
+      .checkoutModal-content .buy-btn {
+        color: #ececec;
+        text-transform: uppercase;
+        background-color: #e60028;
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+        font-size: 100%;
+        padding: 15px 0;
+        width: 100%;
+        margin-right: 1%;
+        border: 0;
+        margin-top: 20px;
+        cursor: pointer;
+        transition: background-color 0.2s; }
+        .checkoutModal-content .buy-btn:hover {
+          background-color: #bd0021; }
 
 
 @media only screen and (max-width: 1024px) {

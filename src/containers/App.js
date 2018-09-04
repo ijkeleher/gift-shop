@@ -13,6 +13,7 @@ import store from '../store';
 import Corner from '../components/github/Corner';
 import AdminLogin from '../components/AdminLogin';
 
+import Alert from 'react-s-alert';
 
 class App extends Component {
   render() {
@@ -26,6 +27,12 @@ class App extends Component {
           </main>
           <Footer />
           <FloatCart />
+          <div>
+            <span>
+              {this.props.children}
+            </span>
+            <Alert stack={{limit: 3}} />
+          </div>
           <AdminLogin/>
         </div>
       </Provider>

@@ -446,13 +446,23 @@ footer {
       .checkoutModal {
           display: block;
           position: fixed;
-          z-index: 9999999;
+          z-index: 999;
           top: 0;
           width: 100%;
           height: 100%;
           overflow: auto;
           background-color: rgba(0,0,0,0.4);
       }
+    .coup-submit {
+      background-color: #000054;
+      border: #000054;
+      color: #fff;
+      transition: background-color 0.2s;
+    }
+    .coup-submit:hover {
+      background-color: #eabf00;
+    }
+
 
       .checkoutModal-content {
           background-color: #eabf00;

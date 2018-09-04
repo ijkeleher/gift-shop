@@ -8,6 +8,11 @@ import { showCheckout } from '../store/actions/checkoutActions';
 
 import util from '../util';
 
+// This is to add some custom alert boxes to the checkout section
+import Alert from 'react-s-alert';
+//import 'react-s-alert/dist/s-alert-default.css'
+import '../containers/DefaultAlertStyle.css';
+import 'react-s-alert/dist/s-alert-css-effects/jelly.css';
 
 class Checkout extends Component {
   state = {
@@ -24,7 +29,8 @@ class Checkout extends Component {
   proceedToCheckout = () => {
     const { totalPrice, currencyFormat, currencyId } = this.props.cartTotals;
     const { cartProducts, updateCart } = this.props;
-    alert(`Checkout - Subtotal: ${currencyFormat} ${util.formatPrice(totalPrice, currencyId)}`);
+    Alert.success(`Checkout - Subtotal: ${currencyFormat} ${util.formatPrice(totalPrice, currencyId)}`,
+        {effect: 'jelly', position: 'top'});
     this.writeToFile();
     this.closeCheckout();
     this.setState({twentyoffDiscount: false});
@@ -46,17 +52,15 @@ class Checkout extends Component {
 
   applyDiscount = (event) => {
     const { totalPrice } = this.props.cartTotals;
-    event.preventDefault();
-
     if (this.state.couponCode === "20OFF" && !this.state.twentyoffDiscount) {
       this.setState({twentyoffDiscount: true})
       this.setState({coupSuccess: true})
       this.props.cartTotals.totalPrice = totalPrice*0.80;
       this.setState({totalPrice});
     } else if  (this.state.couponCode === "20OFF" && this.state.twentyoffDiscount) {
-      alert("Code has already been entered!");
+      Alert.error("Code has already been entered!", {effect: 'jelly', position: 'top'});
     } else {
-      alert("Invalid code!");
+      Alert.error("Invalid code!", {effect: 'jelly', position: 'top'});
     }
   }
 

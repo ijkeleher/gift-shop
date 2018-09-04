@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /UsersUsernodejsnpm-cache
+/src/components/shelf/UsersUsernodejsnpm-cache
 
 # testing
 /coverage
@@ -18,6 +19,7 @@
 .env.production.local
 package.json
 package-lock.json
+data/checkout.txt
 
 npm-debug.log*
 yarn-debug.log*

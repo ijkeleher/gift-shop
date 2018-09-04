@@ -69,7 +69,7 @@ class Product extends React.Component {
         </div>
         
         {localStorage.getItem("isLoggedIn") && 
-          <div onClick = {this.editItemMenu}>Edit</div>
+          <div className="edit-item-button" onClick = {this.editItemMenu}>Edit Item</div>
         }
         {this.state.showEditMenu ?
           <EditProduct title={this.props.product.title}/> :

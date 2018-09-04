@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /UsersUsernodejsnpm-cache
+/src/components/shelf/UsersUsernodejsnpm-cache
 
 # testing
 /coverage

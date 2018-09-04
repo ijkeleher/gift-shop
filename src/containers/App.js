@@ -11,6 +11,7 @@ import Checkout from '../components/Checkout';
 
 import store from '../store';
 import Corner from '../components/github/Corner';
+import AdminLogin from '../components/AdminLogin';
 
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
           </main>
           <Footer />
           <FloatCart />
+          <AdminLogin/>
         </div>
       </Provider>
     )

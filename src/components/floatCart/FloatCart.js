@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loadCart, removeProduct } from '../../store/actions/floatCartActions';
 import { updateCart } from '../../store/actions/updateCartActions';
-import { showCheckout, openCheckout } from '../../store/actions/checkoutActions';
+import { showCheckout } from '../../store/actions/checkoutActions';
 
 import CartProduct from './CartProduct';
 
@@ -207,7 +207,6 @@ FloatCart.propTypes = {
   newProduct: PropTypes.object,
   removeProduct: PropTypes.func,
   productToRemove: PropTypes.object,
-  openCheckout: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
@@ -217,4 +216,4 @@ const mapStateToProps = state => ({
   cartTotals: state.cartTotals.item,
 });
 
-export default connect(mapStateToProps, { loadCart, updateCart, removeProduct, openCheckout, showCheckout })(FloatCart);
+export default connect(mapStateToProps, { loadCart, updateCart, removeProduct, showCheckout })(FloatCart);

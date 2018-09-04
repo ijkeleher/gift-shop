@@ -1,4 +1,4 @@
-import { SHOW_CHECKOUT, OPEN_CHECKOUT, CLOSE_CHECKOUT } from '../actions/types';
+import { SHOW_CHECKOUT } from '../actions/types';
 
 
 const initialState = {
@@ -8,16 +8,6 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case SHOW_CHECKOUT:
-      return {
-        ...state,
-        item: action.payload
-      };
-    case OPEN_CHECKOUT:
-      return {
-        ...state,
-        item: action.payload
-      };
-    case CLOSE_CHECKOUT:
       return {
         ...state,
         item: action.payload

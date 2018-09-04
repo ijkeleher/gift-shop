@@ -29,7 +29,7 @@ class Checkout extends Component {
   proceedToCheckout = () => {
     const { totalPrice, currencyFormat, currencyId } = this.props.cartTotals;
     const { cartProducts, updateCart } = this.props;
-    Alert.success(`Checkout - Subtotal: ${currencyFormat} ${util.formatPrice(totalPrice, currencyId)}`,
+    Alert.info(`Checkout - Subtotal: ${currencyFormat} ${util.formatPrice(totalPrice, currencyId)}`,
         {effect: 'jelly', position: 'top'});
     this.writeToFile();
     this.closeCheckout();
@@ -37,7 +37,6 @@ class Checkout extends Component {
     this.setState({coupSuccess: false});
     cartProducts.length = 0;
     updateCart(cartProducts);
-
   }
 
   writeToFile = () => {
@@ -74,9 +73,7 @@ class Checkout extends Component {
     return(
       <div>
         {this.props.checkoutIsOpen &&(
-
           <div className="checkoutModal">
-
           <div className="checkoutModal-content">
             <span className="close-btn" onClick={this.closeCheckout}>&times;</span>
             <div>
@@ -128,10 +125,8 @@ class Checkout extends Component {
                         </p>
                       </div>
                     )}
-
-                      <input className="buy-btn" type="submit" value="Checkout"></input>
-
-                  </div>
+                    <input className="buy-btn" type="submit" value="Checkout"></input>
+                </div>
               </form>
             </div>
           </div>

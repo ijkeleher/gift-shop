@@ -13,6 +13,11 @@ import persistentCart from "../../persistentCart";
 
 import util from '../../util';
 
+// This is to add some custom alert boxes to the checkout section
+import Alert from 'react-s-alert';
+//import 'react-s-alert/dist/s-alert-default.css'
+import '../../containers/DefaultAlertStyle.css';
+import 'react-s-alert/dist/s-alert-css-effects/jelly.css';
 
 class FloatCart extends Component {
 
@@ -82,7 +87,7 @@ class FloatCart extends Component {
     const { showCheckout } = this.props;
 
     if (!productQuantity)
-      alert("Add some products to the cart!");
+      Alert.info("Add some products to the cart!", {effect: 'jelly'});
     else
       showCheckout(true);
   }

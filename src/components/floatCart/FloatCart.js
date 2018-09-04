@@ -81,11 +81,24 @@ class FloatCart extends Component {
     const { cartProducts, updateCart } = this.props;
     if (!productQuantity) {
       alert("Add some products to the cart!");
-    }else {
-      alert(`Checkout - Subtotal: ${currencyFormat} ${util.formatPrice(totalPrice, currencyId)}`);
+    }
+    else {
+      this.writeToFile();
+      alert(`Checkout - Subtotal: ${currencyFormat} ${util.formatPrice(totalPrice, currencyId)}`);      
       cartProducts.length = 0;
       updateCart(cartProducts);
     }
+  }
+
+  writeToFile = () => {
+
+    var productDetails = '\n';
+    for(var i = 0; i<this.props.cartProducts.length; i++){
+      productDetails = productDetails + this.props.cartProducts[i].title + ','; 
+    }
+    productDetails = productDetails + this.props.cartTotals.totalPrice;
+    fetch(`http://localhost:8001/api/products/write/${productDetails}`);
+
   }
 
   applyDiscount = (event) => {
@@ -94,7 +107,10 @@ class FloatCart extends Component {
 
     if (this.state.value === "20OFF" && !twentyoffDiscount) {
       this.props.cartTotals.twentyoffDiscount = true;
-      this.state.coupSuccess = true;
+      this.setState({
+        coupSuccess: true
+      })
+      //this.state.coupSuccess = true;
       this.props.cartTotals.totalPrice = totalPrice*0.80;
       this.setState({totalPrice});
     } else if  (this.state.value === "20OFF" && twentyoffDiscount) {

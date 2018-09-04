@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 
+class Footer extends Component {
 
-const Footer = () => (
-  <footer>
-    Created by Claudia, Inci, Jack and Cassandra of Blue Team
-  </footer>
-);
+  render() {
+
+    return(
+      <footer>
+        Created by Claudia, Inci, Jack and Cassandra of Blue Team
+      </footer>
+    );
+
+  }
+}
 
 export default Footer;

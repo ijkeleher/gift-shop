@@ -125,11 +125,11 @@
     top: auto;
 }
 .s-alert-top {
-    width: 100%;
-    max-width: 100%;
+    width: 50%;
+    max-width: 50%;
     top: 0;
-    left: 0;
-    right: 0;
+    left: 25%;
+    right: 25%;
     bottom: auto;
 }
 

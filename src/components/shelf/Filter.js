@@ -28,7 +28,7 @@ const availableTypes = [
 ];
 
 const availableShipping = [
-  'null'
+  'Free'
 ];
 
 class Filter extends Component {
@@ -81,7 +81,7 @@ class Filter extends Component {
         {this.createGenderCheckbox()}
 		  <h4 className="title">Types:</h4>
         {this.createTypeCheckbox()}
-      <h4 className="title">Free Shipping:</h4>
+      <h4 className="title">Shipping:</h4>
         {this.createShippingCheckbox()}
 
       </div>

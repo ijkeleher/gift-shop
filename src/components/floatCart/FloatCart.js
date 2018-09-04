@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { loadCart, removeProduct } from '../../store/actions/floatCartActions';
 import { updateCart } from '../../store/actions/updateCartActions';
+import { showCheckout } from '../../store/actions/checkoutActions';
 
 import CartProduct from './CartProduct';
 
@@ -11,12 +13,16 @@ import persistentCart from "../../persistentCart";
 
 import util from '../../util';
 
+// This is to add some custom alert boxes to the checkout section
+import Alert from 'react-s-alert';
+//import 'react-s-alert/dist/s-alert-default.css'
+import '../../containers/DefaultAlertStyle.css';
+import 'react-s-alert/dist/s-alert-css-effects/jelly.css';
 
 class FloatCart extends Component {
 
   state = {
     isOpen: false,
-    coupSuccess: false,
   };
 
   componentWillMount() {
@@ -77,52 +83,14 @@ class FloatCart extends Component {
   }
 
   proceedToCheckout = () => {
-    const { totalPrice, productQuantity, currencyFormat, currencyId } = this.props.cartTotals;
-    const { cartProducts, updateCart } = this.props;
-    if (!productQuantity) {
-      alert("Add some products to the cart!");
-    }
-    else {
-      this.writeToFile();
-      alert(`Checkout - Subtotal: ${currencyFormat} ${util.formatPrice(totalPrice, currencyId)}`);      
-      cartProducts.length = 0;
-      updateCart(cartProducts);
-    }
+    const { productQuantity } = this.props.cartTotals;
+    const { showCheckout } = this.props;
+
+    if (!productQuantity)
+      Alert.info("Add some products to the cart!", {effect: 'jelly'});
+    else
+      showCheckout(true);
   }
-
-  writeToFile = () => {
-
-    var productDetails = '\n';
-    for(var i = 0; i<this.props.cartProducts.length; i++){
-      productDetails = productDetails + this.props.cartProducts[i].title + ','; 
-    }
-    productDetails = productDetails + this.props.cartTotals.totalPrice;
-    fetch(`http://localhost:8001/api/products/write/${productDetails}`);
-
-  }
-
-  applyDiscount = (event) => {
-    const { totalPrice, twentyoffDiscount } = this.props.cartTotals;
-    event.preventDefault();
-
-    if (this.state.value === "20OFF" && !twentyoffDiscount) {
-      this.props.cartTotals.twentyoffDiscount = true;
-      this.setState({
-        coupSuccess: true
-      })
-      //this.state.coupSuccess = true;
-      this.props.cartTotals.totalPrice = totalPrice*0.80;
-      this.setState({totalPrice});
-    } else if  (this.state.value === "20OFF" && twentyoffDiscount) {
-      alert("Code has already been entered!");
-    } else {
-      alert("Invalid code!");
-    }
-  }
-
-  handleChange = (event) =>
-    this.setState({value: event.target.value});
-
 
   render() {
     const { cartTotals, cartProducts, removeProduct } = this.props;
@@ -222,19 +190,6 @@ class FloatCart extends Component {
                 )}
               </small>
             </div>
-            <div className="coup-btn">
-              <form onSubmit={this.applyDiscount}>
-                <input className="coup-text" type="text" name="coupon" onChange={this.handleChange}></input>
-                <input className="coup-submit" type="submit" value="Enter Coupon"></input>
-              </form>
-            </div>
-            {this.state.coupSuccess &&(
-              <div className="coup-msg">
-                <p>
-                  Coupon accepted, 20% has been taken off your price.
-                </p>
-              </div>
-            )}
             <div onClick={() => this.proceedToCheckout()} className="buy-btn">
               Checkout
             </div>
@@ -261,4 +216,4 @@ const mapStateToProps = state => ({
   cartTotals: state.cartTotals.item,
 });
 
-export default connect(mapStateToProps, { loadCart, updateCart, removeProduct})(FloatCart);
+export default connect(mapStateToProps, { loadCart, updateCart, removeProduct, showCheckout })(FloatCart);

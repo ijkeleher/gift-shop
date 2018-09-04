@@ -33,7 +33,7 @@ export const fetchProducts = (filters, sortBy, callback) => dispatch => {
         sizeProducts = products.filter( p => filters.find( f => p.availableSizes.find( size => size === f) ) )
         genderProducts = products.filter( p => filters.find( f => p.availableGenders.find( gender => gender === f) ) )
         typeProducts = products.filter( p => filters.find( f => p.availableTypes.find( type => type === f) ) )
-        freeShipping = products.filter( p => filters.find( ship => ship === 'null' ) )
+        freeShipping = products.filter( p => filters.find( ship => ship === 'Free' ) )
 
         if (Array.isArray(sizeProducts) && sizeProducts.length) {
           products = products.filter( p => filters.find( f => p.availableSizes.find( size => size === f) ) )

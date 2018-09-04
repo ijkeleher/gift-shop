@@ -14,8 +14,6 @@ export const updateCart = (cartProducts) => dispatch => {
     return sum;
   }, 0);
 
-  let twentyoffDiscount = false;
-
   let installments = cartProducts.reduce((greater, p) => {
     greater = p.installments > greater ? p.installments : greater;
     return greater;
@@ -26,7 +24,6 @@ export const updateCart = (cartProducts) => dispatch => {
     productQuantity,
     installments,
     totalPrice,
-    twentyoffDiscount,
     currencyId: 'USD',
     currencyFormat: '$',
   }

@@ -14,7 +14,7 @@ body {
   width: calc(100% - 60px);
   height: 60px;
   vertical-align: middle;
-  line-height: 60px; 
+  line-height: 60px;
   padding-left: 68px;
   font-size: 18px;
 }
@@ -52,7 +52,7 @@ body {
   cursor: pointer;
   outline: inherit;
   height: 40px;
-  width: 120px; 
+  width: 120px;
 }
 
 .admin-login-button:hover{
@@ -65,7 +65,7 @@ body {
 }
 
 .admin-login-form{
-  display:inline-block;  
+  display:inline-block;
 }
 .admin-login-form input{
   width: 120px;
@@ -74,7 +74,7 @@ body {
   padding-left: 10px;
   border-color: #000054;
   border-width: 1px;
-  font-family: inherit;  
+  font-family: inherit;
 }
 
 .admin-login-form button{
@@ -446,7 +446,7 @@ footer {
       .checkoutModal {
           display: block;
           position: fixed;
-          z-index: 1;
+          z-index: 9999999;
           top: 0;
           width: 100%;
           height: 100%;

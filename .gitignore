@@ -19,6 +19,7 @@
 .env.production.local
 package.json
 package-lock.json
+data/checkout.txt
 
 npm-debug.log*
 yarn-debug.log*

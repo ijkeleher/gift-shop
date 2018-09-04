@@ -25,9 +25,22 @@ class Checkout extends Component {
     const { totalPrice, currencyFormat, currencyId } = this.props.cartTotals;
     const { cartProducts, updateCart } = this.props;
     alert(`Checkout - Subtotal: ${currencyFormat} ${util.formatPrice(totalPrice, currencyId)}`);
+    this.writeToFile();
     this.closeCheckout();
+    this.setState({twentyoffDiscount: false});
+    this.setState({coupSuccess: false});
     cartProducts.length = 0;
     updateCart(cartProducts);
+
+  }
+
+  writeToFile = () => {
+    var productDetails = '\n';
+    for(var i = 0; i<this.props.cartProducts.length; i++){
+      productDetails = productDetails + this.props.cartProducts[i].title + ',';
+    }
+    productDetails = productDetails + this.props.cartTotals.totalPrice+'\n';
+    fetch(`http://localhost:8001/api/products/write/${productDetails}`);
 
   }
 
@@ -113,7 +126,7 @@ class Checkout extends Component {
                     )}
 
                       <input className="buy-btn" type="submit" value="Checkout"></input>
-                    
+
                   </div>
               </form>
             </div>

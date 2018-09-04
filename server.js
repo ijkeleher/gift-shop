@@ -52,41 +52,27 @@ function editWord(request, response){
 	var word = Number(data.word);
 	var replace = Number(data.replace);
 	products.products[word].price = replace;
-	//words[word]=replace;
 	var data = JSON.stringify(products, null, 2);
 	fs.writeFile(__dirname + '/data/products.json', data, finished);
 	function finished(err){
-		console.log("all set");
+		console.log(err);
 	}
-
 }
 
-app.get('/api/products/add/:word/:score?', addWord);
+app.get('/api/products/edit/name/:name/:replace?', editName);
 
-function addWord(request, response){
+function editName(request, response){
 	var data = request.params;
-	var word = data.word;
-	var score = Number(data.score);
-	
-	if(!score){
-		var reply = {
-			msg: "Score is required"
-		}
-	}
-	else{
-		words[word] = score;
-		var data = JSON.stringify(words, null, 2);
-		fs.writeFile('fred.json', data, finished);
-		function finished(err){
-			console.log("all set");
-		}
-
-		var reply = {
-			msg: "Thankyou for your word"
-		}
-		response.send(reply);
+	var word = Number(data.name);
+	var replace = data.replace;
+	products.products[word].title = replace;
+	var data = JSON.stringify(products, null, 2);
+	fs.writeFile(__dirname + '/data/products.json', data, finished);
+	function finished(err){
+		console.log(err);
 	}
 }
+
 
 app.use('*', function (req, res) {
     res.redirect(routes.products.get);

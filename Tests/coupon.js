@@ -1,4 +1,4 @@
-/* From Checkout.js */
+/* From src/components/Checkout.js */
 function applyDiscount (state, totalPrice) {
   // const { totalPrice } = this.props.cartTotals;
   if (state.couponCode === "20OFF" && !state.twentyoffDiscount) {

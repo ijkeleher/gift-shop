@@ -1,4 +1,4 @@
-/* From AdminLogin.js */
+/* From src/components/AdminLogin.js */
 function logIn (username, password) {
 
   /* var username = document.getElementById("username").value;

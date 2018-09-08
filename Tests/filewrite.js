@@ -1,4 +1,4 @@
-/* From Checkout.js */
+/* From src/components/Checkout.js */
 function writeToFile(cartProducts, totalPrice) {
   var productDetails = '\n';
   for(var i = 0; i<cartProducts.length; i++){

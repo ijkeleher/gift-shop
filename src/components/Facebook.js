@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
 
 export default class Facebook extends Component{
+  //data we retrieve from the facebook login object
   state = {
     isLoggedIn: false,
     userID: "",
@@ -25,7 +26,9 @@ export default class Facebook extends Component{
     if(this.state.isLoggedIn){
       fbContent = null;
     } else {
+      //grab the data
       fbContent = (<FacebookLogin
+        //this is the appID registed on developers.facebook.com
         appId="332073414030996"
         autoLoad="false"
         fields="name,email,picture"

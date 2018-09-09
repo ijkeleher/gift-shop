@@ -11,8 +11,13 @@
 ## Basic Overview  [Live Demo](https://react-shopping-cart-67954.firebaseapp.com/)
 
 This simple shopping cart prototype shows how React components and Redux can be used to build a
-friendly user experience with instant visual updates and scaleable code in ecommerce applications. 
+friendly user experience with instant visual updates and scaleable code in ecommerce applications.
 
+Team members:
+Inci
+Cass
+Jack
+Claudia
 
 #### Features
 - Add and remove products from the floating cart
@@ -20,7 +25,11 @@ friendly user experience with instant visual updates and scaleable code in ecomm
 - Filter products by available sizes
 - Products persist in floating cart even after page reloads
 - Responsive design for desktop, tablets and mobile
-- Product stoppers for free shipping
+- Coupon for free shipping
+- Admin can edit products
+- Log in with Facebook
+- Log in with Google
+- Print receipt on checkout
 
 #### Using
 - React
@@ -33,6 +42,7 @@ friendly user experience with instant visual updates and scaleable code in ecomm
 - CSS
   * BEM methodology
   * SASS
+- Jest
 
 ## Getting started
 
@@ -54,10 +64,15 @@ Start the server using:
 ``` bash
 npm run server
 ```
-
 When done, the products API will be running on  `http://localhost:8001/api/products`
 
 keep it running on a terminal and go to the next step.
+
+### Run Tests
+Execute the following command on your terminal to run the tests:
+``` bash
+yarn test
+```
 
 ### Start the React App
 
@@ -74,8 +89,7 @@ The application will start automatically in your browser on `http://localhost:30
 The MIT License (MIT). Please see License File for more information.
 
 ### Todo
-- [ ] Implement filters by URL params using react-router
-
+- [ ] User Acceptance Testing for Version 1.0
 <br/>
 <br/>
 
@@ -83,4 +97,3 @@ The MIT License (MIT). Please see License File for more information.
 <p align="center">
 <sub>A little project by <a href="http://www.jeffersonribeiro.com/">Jefferson Ribeiro</a></sub>
 </p>
-

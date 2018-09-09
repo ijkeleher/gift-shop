@@ -13,6 +13,11 @@
 This simple shopping cart prototype shows how React components and Redux can be used to build a
 friendly user experience with instant visual updates and scaleable code in ecommerce applications.
 
+Team members:
+Inci
+Cass
+Jack
+Claudia
 
 #### Features
 - Add and remove products from the floating cart
@@ -84,7 +89,7 @@ The application will start automatically in your browser on `http://localhost:30
 The MIT License (MIT). Please see License File for more information.
 
 ### Todo
-User Acceptance Testing for Version 1.0
+- [ ] User Acceptance Testing for Version 1.0
 <br/>
 <br/>
 

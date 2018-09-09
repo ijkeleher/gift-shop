@@ -4,6 +4,49 @@ body {
   color: #1b1a20;
   font-family: 'Roboto', sans-serif; }
 
+.edit-product-menu{
+  background-color: #e60028;
+  height: 140px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.edit-item-button{
+  cursor: pointer;
+  background-color: #e60028;
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+}
+
+.edit-item-button:hover{
+  background-color: #da4d65;
+
+}
+
+.edit-product-menu input{
+  height: 20px;
+  padding-left: 2px;
+  margin-bottom: 5px;
+  border-color: #000054;
+  border-width: 1px;
+  font-family: inherit;
+}
+
+.edit-product-menu button{
+  background-color: #000054;
+  color: white;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  width: 120px;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+
 .logged-in{
   background-color: #eabf00;
   color: #000054;
@@ -63,6 +106,8 @@ body {
   display:inline-block;
   margin-left: 50px;
 }
+
+
 
 .admin-login-form{
   display:inline-block;
@@ -442,6 +487,13 @@ footer {
       transition: background-color 0.2s; }
       .float-cart__footer .buy-btn:hover {
         background-color: #bd0021; }
+
+        .float-cart__footer .fb-btn {
+          text-align: center;
+          padding: 15px 0;
+          margin-top: 20px;
+          cursor: pointer;
+          transition: background-color 0.2s; }
 
       .checkoutModal {
           display: block;

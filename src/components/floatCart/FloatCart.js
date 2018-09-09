@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import Facebook from '../Facebook.js';
+import Google from '../Google.js';
+
 
 import { connect } from 'react-redux';
 import { loadCart, removeProduct } from '../../store/actions/floatCartActions';
@@ -189,10 +192,18 @@ class FloatCart extends Component {
                   </span>
                 )}
               </small>
+              <div>
+
+              </div>
             </div>
             <div onClick={() => this.proceedToCheckout()} className="buy-btn">
               Checkout
             </div>
+            <div className="fb-btn">
+                <Facebook/>
+              <Google/>
+            </div>
+
           </div>
         </div>
       </div>

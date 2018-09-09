@@ -5,8 +5,6 @@
   "private": true,
   "dependencies": {
     "antd": "^2.11.2",
-    "react-apollo": "^1.4.3",
-    "react-router-dom": "^4.1.1",
     "auth0-js": "^9.7.3",
     "axios": "^0.18.0",
     "cors": "^2.8.4",
@@ -15,20 +13,31 @@
     "jwt-decode": "^2.2.0",
     "node-sass-chokidar": "^1.2.2",
     "react": "^16.3.1",
+    "react-apollo": "^1.4.3",
     "react-dom": "^16.3.1",
+    "react-facebook-login": "^4.1.0",
+    "react-google-login": "^3.2.1",
     "react-redux": "^5.0.7",
-    "react-s-alert": "^1.4.1",
     "react-router": "^4.3.1",
+    "react-router-dom": "^4.1.1",
+    "react-s-alert": "^1.4.1",
     "react-scripts": "1.1.4",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
+  },
+  "devDependecies": {
+    "babel-jest": "^23.4.2",
+    "babel-preset-env":"^1.7.0",
+    "babel-preset-react":"^6.24.1",
+    "jest":"^23.5.0",
+    "react-test-renderer":"^16.4.2"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject",
     "server": "nodemon --watch public server.js"
   },
@@ -43,7 +52,11 @@
   "author": "Jefferson Ribeiro",
   "license": "MIT",
   "devDependencies": {
-    "nodemon": "^1.17.3"
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.4.2",
+    "jest": "^23.5.0",
+    "nodemon": "^1.17.3",
+    "regenerator-runtime": "^0.12.1"
   },
   "bugs": {
     "url": "https://github.com/jeffersonRibeiro/react-shopping-cart/issues"

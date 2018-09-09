@@ -14,8 +14,7 @@ export default class Facebook extends Component{
     console.log(response);
     sessionStorage.setItem("loginData", response);
     //test fetching of user name
-    console.log("Hello " + response.name + " welcome to the RMIT giftshop");
-
+    console.log("Hello " + response.name + "welcome to the RMIT giftshop");
   }
 
   componentClicked = () => console.log("clicked");
@@ -37,7 +36,6 @@ export default class Facebook extends Component{
     return (
       <div>
       {fbContent}
-
       </div>
     )
   }

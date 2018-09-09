@@ -200,7 +200,7 @@ class FloatCart extends Component {
               Checkout
             </div>
             <div className="fb-btn">
-              <Facebook/>
+                <Facebook/>
               <Google/>
             </div>
 

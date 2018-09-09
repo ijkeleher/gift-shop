@@ -7,8 +7,7 @@ class Footer extends Component {
 
     return(
       <footer>
-
-        Created by Claudia, Inci, Jack and Cassandra of Blue Team
+        Created by Claudia, Inci, Jack and Cassandra of Blue Team. 
       </footer>
     );
 

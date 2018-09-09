@@ -27,6 +27,7 @@ Claudia 25%
 - Responsive design for desktop, tablets and mobile
 - Coupon for free shipping
 - Admin can edit products
+- Log in as Admin
 - Log in with Facebook
 - Log in with Google
 - Print receipt on checkout

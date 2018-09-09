@@ -36,8 +36,7 @@ class App extends Component {
             </span>
             <Alert stack={{limit: 3}} />
           </div>
-          <Facebook/>
-          <Google/>
+          
 
           <AdminLogin/>
         </div>

@@ -64,6 +64,8 @@ body {
   margin-left: 50px;
 }
 
+
+
 .admin-login-form{
   display:inline-block;
 }
@@ -442,6 +444,13 @@ footer {
       transition: background-color 0.2s; }
       .float-cart__footer .buy-btn:hover {
         background-color: #bd0021; }
+
+        .float-cart__footer .fb-btn {
+          text-align: center;
+          padding: 15px 0;
+          margin-top: 20px;
+          cursor: pointer;
+          transition: background-color 0.2s; }
 
       .checkoutModal {
           display: block;

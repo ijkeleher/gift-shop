@@ -4,6 +4,7 @@ import GoogleLogout from 'react-google-login';
 
 
 export default class Google extends Component{
+  {/*the data we'll be grabbing from the google auth object*/}
   state = {
     isLoggedIn: false,
     userID: "",
@@ -13,7 +14,9 @@ export default class Google extends Component{
   }
 
   responseGoogle= response => {
+    {/* test we recieved the auth object*/}
     console.log(response);
+
   }
 
   componentClicked = () => console.log("clicked");
@@ -23,9 +26,7 @@ export default class Google extends Component{
 
     if(this.state.isLoggedIn){
       googleContent = null;
-      // googleContent = ( <GoogleLogout
-      // buttonText="Logout"
-      // onLogoutSuccess={this.logout} />)
+      {/* client ID is registed with googleAUth. set autoLoad to true to autologin*/}
     } else {
       googleContent = (<GoogleLogin
         clientId="840926923902-a6mbee0n6srst13qb90eseeplf42r88a.apps.googleusercontent.com"
@@ -37,6 +38,7 @@ export default class Google extends Component{
 
     return (
       <div>
+        {/* render the button*/}
       {googleContent}
       </div>
     )

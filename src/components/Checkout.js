@@ -8,14 +8,14 @@ import { showCheckout } from '../store/actions/checkoutActions';
 
 import util from '../util';
 
-{/* This is to add some custom alert boxes to the checkout section */}
+/* This is to add some custom alert boxes to the checkout section */
 import Alert from 'react-s-alert';
-{/*import 'react-s-alert/dist/s-alert-default.css'*/}
+/*import 'react-s-alert/dist/s-alert-default.css'*/
 import '../containers/DefaultAlertStyle.css';
 import 'react-s-alert/dist/s-alert-css-effects/jelly.css';
 
 class Checkout extends Component {
-  {/*init state */}
+  /*init state */
   state = {
     couponCode: false,
     coupSuccess: false,
@@ -40,18 +40,18 @@ class Checkout extends Component {
     updateCart(cartProducts);
   }
 
-{/* write the cart details to a textfile receipt*/}
+/* write the cart details to a textfile receipt*/
   writeToFile = () => {
     var productDetails = '\n';
     for(var i = 0; i<this.props.cartProducts.length; i++){
       productDetails = productDetails + this.props.cartProducts[i].title + ',';
     }
     productDetails = productDetails + this.props.cartTotals.totalPrice+'\n';
-    {/* fetch the JSON data */}
+    /* fetch the JSON data */
     fetch(`http://localhost:8001/api/products/write/${productDetails}`);
 
   }
-  {/* Apply Discount function currently has hardcoded values for "20OFF" coupon*/}
+  /* Apply Discount function currently has hardcoded values for "20OFF" coupon*/
   applyDiscount = (event) => {
     const { totalPrice } = this.props.cartTotals;
     if (this.state.couponCode === "20OFF" && !this.state.twentyoffDiscount) {

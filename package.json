@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Shopping cart",
   "private": true,
-  "homepage": "https://RMIT-SEPT.github.io/BlueTeam/build",
+  "homepage": "https://react-shopping-c-1536060086104.firebaseapp.com",
   "dependencies": {
     "antd": "^2.11.2",
     "auth0-js": "^9.7.3",

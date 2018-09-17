@@ -3,7 +3,9 @@ import axios from 'axios';
 
 
 //const productsAPI = "https://react-shopping-cart-67954.firebaseio.com/products.json";
-const productsAPI = "http://localhost:8001/api/products";
+//const productsAPI = "http://localhost:8001/api/products";
+
+const productsAPI = "https://react-shopping-c-1536060086104.firebaseapp.com/products.json";
 
 const compare = {
   'lowestprice': (a, b) => {

@@ -45,6 +45,98 @@ function writeFile(request, response){
 	}
 }
 
+const multer = require("multer");
+const path = require("path");
+
+
+const handleError = (err, res) => {
+  res
+    .status(500)
+    .contentType("text/plain")
+    .end("Oops! Something went wrong!");
+};
+
+const upload = multer({
+  dest: "/tempImages"
+});
+
+app.get("/", express.static(path.join(__dirname, "./src/components/shelf")));
+
+var SKUg;
+
+app.post(
+  "/upload",
+  upload.single("file" /* name attribute of <file> element in your form */),
+  (req, res) => {
+    const tempPath = req.file.path;
+    const targetPath = path.join(__dirname, `./src/static/products/${SKUg}_1.png`);
+
+    if (path.extname(req.file.originalname).toLowerCase() === ".png") {
+      fs.rename(tempPath, targetPath, err => {
+        if (err) return handleError(err, res);
+
+        res
+          .status(200)
+          .contentType("text/plain")
+          .end("File uploaded!");
+      });
+    } else {
+      fs.unlink(tempPath, err => {
+        if (err) return handleError(err, res);
+
+        res
+          .status(403)
+          .contentType("text/plain")
+          .end("Only .png files are allowed!");
+      });
+    }
+	}
+);
+
+
+app.get('/api/products/addItem/:id/:sku/:title/:price/:installments/:shipping?', addItem);
+function addItem(request, response){
+	var data = request.params;
+	var id = Number(data.id);
+	var sku = Number(data.sku);
+	SKUg = data.sku;
+	var title = data.title;
+	var price = Number(data.price);
+	var installments = data.installments;
+	var shipping = data.shipping;
+
+	products.products.push({		
+      "id": id,
+      "sku": sku,
+      "title": title,
+      "description": "",
+      "availableSizes": [
+        ""
+      ],
+      "availableTypes": [
+        ""
+      ],
+      "availableGenders": [
+        ""
+      ],
+      "style": "",
+      "price": price,
+      "installments": installments,
+      "currencyId": "USD",
+      "currencyFormat": "$",
+      "isFreeShipping": shipping
+	})
+
+	var newData = JSON.stringify(products, null, 2);
+
+	//fs.writeFile(__dirname + '/data/products.json', newData, finished);
+	function finished(err){
+		console.log(err);
+	}
+
+}
+
+
 app.get('/api/products/edit/:word/:replace?', editWord);
 
 function editWord(request, response){

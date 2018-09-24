@@ -43,7 +43,7 @@ export default class Facebook extends Component{
     return (
       <div>
         {/*Header stating user's name*/}
-        <div className="logged-in">Logged in as {this.state.name}</div>
+        <div className="logged-in" id="fb">Logged in as {this.state.name}</div>
         {/*the button*/}
         {fbContent}
       </div>

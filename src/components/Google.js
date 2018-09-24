@@ -45,7 +45,7 @@ export default class Google extends Component{
     return (
       <div>
         {/* render the button*/}
-      {googleContent}
+        {googleContent}
       </div>
     )
   }

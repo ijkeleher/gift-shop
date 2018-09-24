@@ -26,7 +26,8 @@
     "react-s-alert": "^1.4.1",
     "react-scripts": "1.1.4",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "uuid": "^3.3.2"
   },
   "devDependecies": {
     "babel-jest": "^23.4.2",

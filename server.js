@@ -35,7 +35,6 @@ app.get('/api/products/hello', (req, res) => {
 });
 
 app.get('/api/products/write/:products', writeFile);
-
 function writeFile(request, response){
 	var cart = request.params;
 	cart = JSON.stringify(cart, null, 2);
@@ -47,51 +46,45 @@ function writeFile(request, response){
 
 const multer = require("multer");
 const path = require("path");
-
-
-const handleError = (err, res) => {
-  res
-    .status(500)
-    .contentType("text/plain")
-    .end("Oops! Something went wrong!");
-};
-
-const upload = multer({
-  dest: "/tempImages"
-});
-
-app.get("/", express.static(path.join(__dirname, "./src/components/shelf")));
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 var SKUg;
 
-app.post(
-  "/upload",
-  upload.single("file" /* name attribute of <file> element in your form */),
-  (req, res) => {
-    const tempPath = req.file.path;
-    const targetPath = path.join(__dirname, `./src/static/products/${SKUg}_1.png`);
 
-    if (path.extname(req.file.originalname).toLowerCase() === ".png") {
-      fs.rename(tempPath, targetPath, err => {
-        if (err) return handleError(err, res);
+// configure storage
+const storage = multer.diskStorage({
+	destination: (req, file, cb) => {
 
-        res
-          .status(200)
-          .contentType("text/plain")
-          .end("File uploaded!");
-      });
-    } else {
-      fs.unlink(tempPath, err => {
-        if (err) return handleError(err, res);
+		cb(null, './src/static/products');
+	},
+	filename: (req, file, cb) => {
+		/*
+			use path.extname() to get
+			the extension from the original file name. These combined will create the file name used
+			to save the file on the server and will be available as
+			req.file.pathname in the router handler.
+		*/
+		console.log("SKU is: " + SKUg);
+		const newFilename = `${SKUg}_1${path.extname(file.originalname)}`;
+		cb(null, newFilename);
+	},
+});
+// create the multer instance that will be used to upload/save the file
+const upload = multer({ storage });
 
-        res
-          .status(403)
-          .contentType("text/plain")
-          .end("Only .png files are allowed!");
-      });
-    }
-	}
-);
+
+app.post('/api/products/upload', upload.single('selectedFile'), (req, res) => {
+
+	/*
+		We now have a new req.file object here. At this point the file has been saved
+		and the req.file.filename value will be the name returned by the
+		filename() function defined in the diskStorage configuration. Other form fields
+		are available here in req.body.
+	*/
+	res.send();
+});
 
 
 app.get('/api/products/addItem/:id/:sku/:title/:price/:installments/:shipping?', addItem);
@@ -102,7 +95,7 @@ function addItem(request, response){
 	SKUg = data.sku;
 	var title = data.title;
 	var price = Number(data.price);
-	var installments = data.installments;
+	var installments = Number(data.installments);
 	var shipping = data.shipping;
 
 	products.products.push({		
@@ -129,7 +122,7 @@ function addItem(request, response){
 
 	var newData = JSON.stringify(products, null, 2);
 
-	//fs.writeFile(__dirname + '/data/products.json', newData, finished);
+	fs.writeFile(__dirname + '/data/products.json', newData, finished);
 	function finished(err){
 		console.log(err);
 	}

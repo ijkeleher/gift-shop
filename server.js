@@ -67,7 +67,7 @@ const storage = multer.diskStorage({
 			req.file.pathname in the router handler.
 		*/
 		console.log("SKU is: " + SKUg);
-		const newFilename = `${SKUg}_1${path.extname(file.originalname)}`;
+		const newFilename = `${SKUg}_1.jpg`;
 		cb(null, newFilename);
 	},
 });

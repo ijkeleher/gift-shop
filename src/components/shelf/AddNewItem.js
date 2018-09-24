@@ -65,7 +65,7 @@ class AddNewItem extends Component{
       <div onSubmit={this.generateSKU} method="post" encType="multipart/form-data" action="/upload">        
         <form>
           <div>Upload item image</div>
-          <input type="file" onChange={this.onChange} name="selectedFile" id="newProductImage" accept="image/png, image/jpeg" required/>
+          <input type="file" onChange={this.onChange} name="selectedFile" id="newProductImage" accept="image/png, image/jpeg, image/jpg" required/>
           <div>Name: </div>
           <input type="text" id="newProductName" placeholder="enter new product name" autoComplete="off" required/>
           <div>Price: </div>

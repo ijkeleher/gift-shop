@@ -15,7 +15,7 @@ class AdminLogin extends Component {
 
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
-    
+
     if( (username.localeCompare("admin") === 0) && (password.localeCompare("admin") === 0)){
       localStorage.setItem("isLoggedIn", true)
     }
@@ -28,31 +28,36 @@ class AdminLogin extends Component {
     console.log("its been clicked");
     if(this.state.showLoginMenu === false){
       this.setState({
-        showLoginMenu: true 
+        showLoginMenu: true
       });
     }
     else{
       this.setState({
-        showLoginMenu: false 
+        showLoginMenu: false
       });
     }
   }
 
+  recoverPassword = (e) => {
+    e.preventDefault();
+  }
+
   renderLogin = () =>{
     return [
-      (this.state.showLoginMenu &&       
+      (this.state.showLoginMenu &&
         <form className="admin-login-form" onSubmit={this.logIn} key={1}>
           <input type="text" autocomplete="off" placeholder="username" id="username"/>
           <input type="password" autocomplete="off" placeholder="password" id="password"/>
           <button>Login</button>
+          <button className="forgotPassword" onClick={this.recoverPassword}>Forgot your password?</button>
         </form>)
     ];
   }
 
-  render() {    
+  render() {
     const loggedIn = localStorage.getItem("isLoggedIn");
 
-    return(       
+    return(
       <div>
 
         {(loggedIn===null || loggedIn===false) ? (
@@ -67,7 +72,7 @@ class AdminLogin extends Component {
             <form onSubmit={this.logOut}>
               <button className="log-out-button">Log out</button>
             </form>
-          </div>          
+          </div>
         )}
 
       </div>

@@ -44,6 +44,7 @@ export default class Google extends Component{
 
     return (
       <div>
+        <div className="logged-in go">Logged in as Fernando</div>
         {/* render the button*/}
         {googleContent}
       </div>

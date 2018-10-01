@@ -20,6 +20,33 @@ app.get(routes.products.get, function (req, res) {
     res.sendFile(__dirname + '/data/products.json');
 });
 
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+  service: 'hotmail',
+  auth: {
+    user: 'blueteamsept@hotmail.com',
+    pass: 'AdminAdminAdmin'
+  }
+});
+
+var mailOptions = {
+  from: 'blueteamsept@hotmail.com',
+  to: 's3668691@student.rmit.edu.au',
+  subject: 'Sending Email using Node.js',
+  text: 'That was easy!'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
+
+
+
 var fs = require('fs');
 //var data = fs.readFileSync('fred.json');
 //var words = JSON.parse(data);
@@ -84,4 +111,3 @@ app.use('*', function (req, res) {
 // Inicia o servidor e avisa o usuário
 app.listen(serverPort);
 console.log(`[products] API escutando na porta ${serverPort}.`);
-

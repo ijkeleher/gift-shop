@@ -2,7 +2,49 @@
 body {
   margin: 0;
   color: #1b1a20;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Roboto', sans-serif; 
+}
+
+.add-new-item-title{
+  background-color: #0078ff;
+  height: 30px;
+  padding: 10px;
+  margin-top: 10px; 
+  text-align: center;
+  cursor: pointer;
+  
+}
+
+.add-new-item{
+  text-align: center;
+  background-color: #d4e2f1;
+}
+
+.add-new-item form div{
+  margin: 10px;
+}
+
+.add-new-item form input{
+  height: 20px;
+  padding-left: 2px;
+  margin-bottom: 5px;
+  border-color: #000054;
+  border-width: 1px;
+  font-family: inherit;
+}
+
+.add-new-item form button{
+  cursor: pointer;
+  background-color: #e60028;
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: none;
+  margin: 10px;
+  margin-top: 20px;
+  width: 150px;
+  height: 40px;
+}
 
 .edit-product-menu{
   background-color: #e60028;

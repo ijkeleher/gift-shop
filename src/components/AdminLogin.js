@@ -42,8 +42,8 @@ class AdminLogin extends Component {
     return [
       (this.state.showLoginMenu &&       
         <form className="admin-login-form" onSubmit={this.logIn} key={1}>
-          <input type="text" autocomplete="off" placeholder="username" id="username"/>
-          <input type="password" autocomplete="off" placeholder="password" id="password"/>
+          <input type="text" autoComplete="off" placeholder="username" id="username"/>
+          <input type="password" autoComplete="off" placeholder="password" id="password"/>
           <button>Login</button>
         </form>)
     ];

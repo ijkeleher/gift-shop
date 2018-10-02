@@ -1,5 +1,4 @@
 runtime: nodejs
-env: flex
 vm: true
 
 # This sample incurs costs to run on the App Engine flexible environment.

@@ -8,7 +8,7 @@ class EditProduct extends Component {
   }
 
   componentDidMount() {
-    fetch("https://storage.googleapis.com/rmit-giftshop/products.json")
+    fetch("http://localhost:8001/api/products")
       .then(response => response.json())
       .then(data => this.setState({ data }));
   }

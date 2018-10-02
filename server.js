@@ -20,30 +20,38 @@ app.get(routes.products.get, function (req, res) {
     res.sendFile(__dirname + '/data/products.json');
 });
 
-var nodemailer = require('nodemailer');
 
-var transporter = nodemailer.createTransport({
-  service: 'hotmail',
-  auth: {
-    user: 'blueteamsept@hotmail.com',
-    pass: 'AdminAdminAdmin'
-  }
+
+app.get('/user/:email', (req, res) => {
+
+	var nodemailer = require('nodemailer');
+	var emailDest = JSON.stringify(req.params);
+	var transporter = nodemailer.createTransport({
+	  service: 'hotmail',
+	  auth: {
+	    user: 'blueteamsept@hotmail.com',
+	    pass: 'AdminAdminAdmin'
+	  }
+	});
+
+
+	var mailOptions = {
+	  from: 'blueteamsept@hotmail.com',
+	  to: emailDest,
+	  subject: 'Your forgotten Admin Account password',
+	  text: 'Your forgotten password is: admin'
+	};
+
+	transporter.sendMail(mailOptions, function(error, info){
+	  if (error) {
+	    console.log(error);
+	  } else {
+	    console.log('Email sent: ' + info.response);
+	  }
+	});
 });
 
-var mailOptions = {
-  from: 'blueteamsept@hotmail.com',
-  to: 's3668691@student.rmit.edu.au',
-  subject: 'Sending Email using Node.js',
-  text: 'That was easy!'
-};
 
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
-});
 
 
 

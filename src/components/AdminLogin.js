@@ -2,8 +2,17 @@ import React, { Component } from 'react';
 import Alert from 'react-s-alert';
 import '../containers/DefaultAlertStyle.css';
 import 'react-s-alert/dist/s-alert-css-effects/jelly.css';
+import axios from 'axios';
 
-const admins = ["Jack","Cass","Claudia","Inci","Reza"];
+const admins = [
+                {username:"Jack", email:"s3668691@student.rmit.edu.au"},
+                {username:"Cass", email:"s3660446@student.rmit.edu.au"},
+                {username:"Claudia",email:"s3668061@student.rmit.edu.au"},
+                {username:"Inci",email:"s3646416@student.rmit.edu.au"},
+                {username:"Reza",email:"reza.soltanpoor@rmit.edu.au"}
+              ];
+
+//const admins = ["Jack","Cass","Claudia","Inci","Reza"];
 
 class AdminLogin extends Component {
 
@@ -19,10 +28,9 @@ class AdminLogin extends Component {
 
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
-  //  var admins = ["Jack","Cass","Claudia","Inci","Reza"];
 
     for (var i = 0; i < admins.length; i++) {
-      if( (username.localeCompare(admins[i]) === 0) && (password.localeCompare("admin") === 0)){
+      if( (username.localeCompare(admins[i].username) === 0) && (password.localeCompare("admin") === 0)){
         localStorage.setItem("isLoggedIn", true);
       }
       /*else{
@@ -55,8 +63,9 @@ class AdminLogin extends Component {
         {effect: 'jelly', position: 'top'});
     } else {
       for (var i = 0; i < admins.length; i++) {
-        if( (username.localeCompare(admins[i]) === 0)){
+        if( (username.localeCompare(admins[i].username) === 0)){
           // Send e-mail
+          axios.get(`http://localhost:8001/user/${admins[i].email}`);
         }
       }
       Alert.info(`If a matching username is found a corresponding e-mail will be sent.`,

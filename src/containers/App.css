@@ -160,6 +160,12 @@ body {
   background-color: #eabf00;
 
 }
+.admin-login-form .forgotPassword{
+  width: 240px;
+}
+
+
+
 .github-corner{
   top: 40px;
   left: 46px;

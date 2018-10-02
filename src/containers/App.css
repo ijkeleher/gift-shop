@@ -60,6 +60,28 @@ body {
   line-height: 60px;
   padding-left: 68px;
   font-size: 18px;
+
+}
+
+.fb, .go {
+  left: 30%;
+  width: calc(40% - 70px);
+  line-height: 60px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: inline-block;
+  opacity: 0.8;
+}
+
+.fb {
+  background-color: #4c69ba;
+  color: #FFF;
+  z-index: 2;
+}
+
+.go {
+  background-color: rgb(209, 72, 54);
+  color: #FFF;
 }
 
 .log-out-button{
@@ -353,6 +375,7 @@ footer {
     position: absolute;
     top: 0;
     left: -50px;
+    z-index: 50;
     cursor: pointer; }
     .float-cart__close-btn:hover {
       background-color: #212027; }

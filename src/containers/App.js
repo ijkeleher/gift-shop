@@ -35,7 +35,7 @@ class App extends Component {
               {this.props.children}
             </span>
             <Alert stack={{limit: 3}} />
-          </div> 
+          </div>
           <AdminLogin/>
         </div>
       </Provider>

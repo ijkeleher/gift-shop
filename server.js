@@ -35,7 +35,6 @@ app.get('/api/products/hello', (req, res) => {
 });
 
 app.get('/api/products/write/:products', writeFile);
-
 function writeFile(request, response){
 	var cart = request.params;
 	cart = JSON.stringify(cart, null, 2);
@@ -44,6 +43,92 @@ function writeFile(request, response){
 		console.log("all set");
 	}
 }
+
+const multer = require("multer");
+const path = require("path");
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+var SKUg;
+
+
+// configure storage
+const storage = multer.diskStorage({
+	destination: (req, file, cb) => {
+
+		cb(null, './src/static/products');
+	},
+	filename: (req, file, cb) => {
+		/*
+			use path.extname() to get
+			the extension from the original file name. These combined will create the file name used
+			to save the file on the server and will be available as
+			req.file.pathname in the router handler.
+		*/
+		console.log("SKU is: " + SKUg);
+		const newFilename = `${SKUg}_1.jpg`;
+		cb(null, newFilename);
+	},
+});
+// create the multer instance that will be used to upload/save the file
+const upload = multer({ storage });
+
+
+app.post('/api/products/upload', upload.single('selectedFile'), (req, res) => {
+
+	/*
+		We now have a new req.file object here. At this point the file has been saved
+		and the req.file.filename value will be the name returned by the
+		filename() function defined in the diskStorage configuration. Other form fields
+		are available here in req.body.
+	*/
+	res.send();
+});
+
+
+app.get('/api/products/addItem/:id/:sku/:title/:price/:installments/:shipping?', addItem);
+function addItem(request, response){
+	var data = request.params;
+	var id = Number(data.id);
+	var sku = Number(data.sku);
+	SKUg = data.sku;
+	var title = data.title;
+	var price = Number(data.price);
+	var installments = Number(data.installments);
+	var shipping = data.shipping;
+
+	products.products.push({		
+      "id": id,
+      "sku": sku,
+      "title": title,
+      "description": "",
+      "availableSizes": [
+        ""
+      ],
+      "availableTypes": [
+        ""
+      ],
+      "availableGenders": [
+        ""
+      ],
+      "style": "",
+      "price": price,
+      "installments": installments,
+      "currencyId": "USD",
+      "currencyFormat": "$",
+      "isFreeShipping": shipping
+	})
+
+	var newData = JSON.stringify(products, null, 2);
+
+	fs.writeFile(__dirname + '/data/products.json', newData, finished);
+	function finished(err){
+		console.log(err);
+	}
+
+}
+
 
 app.get('/api/products/edit/:word/:replace?', editWord);
 

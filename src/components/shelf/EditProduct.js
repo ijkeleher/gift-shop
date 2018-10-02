@@ -29,7 +29,6 @@ class EditProduct extends Component {
               for (i=0; i < this.state.data.products.length; i++) {
                 if (this.state.data.products[i].title.localeCompare(this.props.title)===0) {
                   index = i;
-                  console.log("new name is: " + userName)
                   fetch(`http://localhost:8001/api/products/edit/name/${index}/${userName}?`);   
                 }
               }

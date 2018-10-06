@@ -9,6 +9,7 @@
     "auth0-js": "^9.7.3",
     "axios": "^0.18.0",
     "babel-preset-env": "^1.7.0",
+    "concurrently": "^4.0.1",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "file-system": "^2.2.2",
@@ -37,8 +38,9 @@
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-    "start": "react-scripts start",
     "build": "react-scripts build",
+    "install": "(cd client && yarn) && (cd server && yarn)",
+    "start": "concurrently \"cd client && PORT=3000 yarn start\" \"cd server && PORT=8001 yarn start\"",
     "test": "jest",
     "predeploy": "npm run build",
     "eject": "react-scripts eject",

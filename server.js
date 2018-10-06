@@ -3,7 +3,7 @@ const cors = require('cors');
 const app = express();
 
 // Porta para subir o servidor
-const serverPort = 8080;
+const serverPort = 8000;
 
 // Seta as rotas default da API
 const routes = {

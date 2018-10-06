@@ -2,6 +2,7 @@
   "name": "react-shopping-cart",
   "version": "0.1.0",
   "description": "Shopping cart",
+  "proxy": "localhost:8001",
   "private": true,
   "dependencies": {
     "antd": "^2.11.2",
@@ -38,7 +39,6 @@
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "build": "react-scripts build",
-    "install": "(cd client && yarn) && (cd server && yarn)",
     "start": "concurrently \"react-scripts start\" \"npm run server\"",
     "test": "jest",
     "heroku-postbuild": "npm install && npm run build",

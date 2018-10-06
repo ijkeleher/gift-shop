@@ -2,7 +2,6 @@
   "name": "react-shopping-cart",
   "version": "0.1.0",
   "description": "Shopping cart",
-  "proxy": "localhost:8001",
   "private": true,
   "dependencies": {
     "antd": "^2.11.2",

@@ -1,7 +1,7 @@
 {
   "name": "react-shopping-cart",
   "version": "0.1.0",
-  "proxy": "localhoost: 8001",
+  "proxy": "localhost: 8001",
   "description": "Shopping cart",
   "private": true,
   "dependencies": {

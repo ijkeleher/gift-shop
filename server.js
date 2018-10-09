@@ -14,8 +14,8 @@ const routes = {
 };
 
 // Aplica o CORS para aceitar requisições de outros domínios
-app.use(cors());
-// app.use(express.static(path.join(__dirname, 'build')));
+// app.use(cors());
+app.use(express.static('build'))
 
 
 // if (process.env.NODE_ENV === 'production') {

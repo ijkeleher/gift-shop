@@ -23,7 +23,7 @@ class EditProduct extends Component {
       for (var i=0; i < this.state.data.products.length; i++) {
         if (this.state.data.products[i].title.localeCompare(this.props.title)===0) {
           index = i;          
-          axios.get(`http://localhost:8080/api/products/edit/${index}/${userNum}?`).then(res=>{
+          axios.get(`api/products/edit/${index}/${userNum}?`).then(res=>{
             if(userName.length>0){
               index = 0;  
               for (i=0; i < this.state.data.products.length; i++) {

@@ -4,7 +4,8 @@
   "description": "Shopping cart",
   "proxy": "http://localhost:8080",
   "engines": {
-    "node": "8.11.1"
+    "node": "10.9.0",
+    "npm": "6.2.0"
   },
   "private": true,
   "dependencies": {

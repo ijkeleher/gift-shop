@@ -39,7 +39,7 @@
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "build": "react-scripts build",
-    "start": "concurrently \"react-scripts start\" \"npm run server\"",
+    "start": "node server.js",
     "test": "jest",
     "heroku-postbuild": "npm install && npm run build",
     "predeploy": "npm run build",

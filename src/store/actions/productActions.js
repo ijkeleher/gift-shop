@@ -3,9 +3,17 @@ import axios from 'axios';
 
 
 // const productsAPI = "https://react-shopping-cart-67954.firebaseio.com/products.json";
+<<<<<<< HEAD
 const productsAPI = "/api/products";
+=======
+
+//const productsAPI = "http://localhost:8001/api/products";
+
+//const productsAPI = "https://api.myjson.com/bins/15qhx0";
+>>>>>>> dev_branch
 
 // const productsAPI = "https://storage.googleapis.com/rmit-giftshop/products.json";
+
 
 const compare = {
   'lowestprice': (a, b) => {

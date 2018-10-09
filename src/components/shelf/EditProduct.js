@@ -30,7 +30,7 @@ class EditProduct extends Component {
                 if (this.state.data.products[i].title.localeCompare(this.props.title)===0) {
                   index = i;
                   console.log("new name is: " + userName)
-                  fetch(`/api/products/edit/name/${index}/${userName}?`);   
+                  fetch(`api/products/edit/name/${index}/${userName}?`);   
                 }
               }
             }

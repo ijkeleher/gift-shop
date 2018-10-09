@@ -3,6 +3,7 @@ const formatPrice = (x, currency) => {
     case 'BRL':
       return x.toFixed(2).replace('.', ',');
     default:
+      
       return x.toFixed(2);
   }
 };

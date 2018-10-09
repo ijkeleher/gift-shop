@@ -14,8 +14,7 @@ const routes = {
 	}
 };
 
-// Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, '/build')))
+
 
 
 // Aplica o CORS para aceitar requisições de outros domínios
@@ -23,9 +22,10 @@ app.use(cors());
 // app.use(express.static('build'))
 
 
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static('/build'));
-// }
+if (process.env.NODE_ENV === 'production') {
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, '/build')))
+}
 
 // Registra a rota GET default, enviando o JSON como retorno
 app.get(routes.products.get, function (req, res) {

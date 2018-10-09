@@ -26,10 +26,10 @@ class AddNewItem extends Component{
     formData.append('description', description);
     formData.append('selectedFile', selectedFile);
 
-    fetch(`http://localhost:8001/api/products/addItem/${id}/${SKU}/${name}/${price}/${installments}/${freeShipping}?`);
+    fetch(`api/products/addItem/${id}/${SKU}/${name}/${price}/${installments}/${freeShipping}?`);
 
     console.log("Selected file is: " + this.state.selectedFile);
-    axios.post('http://localhost:8001/api/products/upload', formData)
+    axios.post('api/products/upload', formData)
           .then((result) => {
             // access results...
     });

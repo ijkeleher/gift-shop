@@ -92,7 +92,6 @@ function writeFile(request, response){
 }
 
 const multer = require("multer");
-const path = require("path");
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Shopping cart",
   "proxy": "http://localhost:8080",
+  "engines": {
+    "node": "8.11.1"
+  },
   "private": true,
   "dependencies": {
     "antd": "^2.11.2",

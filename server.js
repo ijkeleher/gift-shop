@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const path = require('path')
 
 
 // Porta para subir o servidor
@@ -13,9 +14,13 @@ const routes = {
 	}
 };
 
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, '/build')))
+
+
 // Aplica o CORS para aceitar requisições de outros domínios
-// app.use(cors());
-app.use(express.static('build'))
+app.use(cors());
+// app.use(express.static('build'))
 
 
 // if (process.env.NODE_ENV === 'production') {

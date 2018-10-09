@@ -2,8 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
+
 // Porta para subir o servidor
-const serverPort = process.env.port || 8080;
+const serverPort = process.env.PORT || 8080;
 
 // Seta as rotas default da API
 const routes = {
@@ -14,10 +15,12 @@ const routes = {
 
 // Aplica o CORS para aceitar requisições de outros domínios
 app.use(cors());
+// app.use(express.static(path.join(__dirname, 'build')));
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('/build'));
-}
+
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static('/build'));
+// }
 
 // Registra a rota GET default, enviando o JSON como retorno
 app.get(routes.products.get, function (req, res) {

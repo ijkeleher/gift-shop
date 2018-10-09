@@ -10,6 +10,7 @@ import Filter from './Filter';
 import ShelfHeader from './ShelfHeader';
 import Clearfix from '../Clearfix';
 import Spinner from '../Spinner';
+import AddNewItem from './AddNewItem';
 
 
 class Shelf extends Component {
@@ -43,8 +44,8 @@ class Shelf extends Component {
   }
 
   render() {
-    const { products } = this.props;
-    
+
+    const { products } = this.props;    
     const p = products.map(p => {
       return (
         <Product
@@ -54,9 +55,8 @@ class Shelf extends Component {
         />
       );
     });
-
     return (
-      <React.Fragment>
+      <React.Fragment>        
         {this.state.loading &&
           <Spinner />
         }
@@ -67,9 +67,11 @@ class Shelf extends Component {
           <Clearfix />
         </div>
         <Clearfix />
+        {localStorage.getItem("isLoggedIn") && 
+          <AddNewItem productsLength={products.length}/> 
+        }
       </React.Fragment>
     )
-
   }
 }
 

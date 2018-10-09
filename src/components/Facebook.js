@@ -13,7 +13,8 @@ export default class Facebook extends Component{
 
   responseFacebook = response => {
     console.log(response);
-    sessionStorage.setItem("loginData", response);
+    localStorage.setItem("loginData", response.name);
+    this.setState({name: response.name});
     /*test fetching of user name from auth object*/
     console.log("Hello " + response.name + "welcome to the RMIT giftshop");
   }
@@ -26,6 +27,7 @@ export default class Facebook extends Component{
 
     if(this.state.isLoggedIn){
       fbContent = null;
+
     } else {
       /*grab the data*/
       fbContent = (<FacebookLogin
@@ -35,12 +37,15 @@ export default class Facebook extends Component{
         fields="name,email,picture"
         onClick={this.componentClicked}
         callback={this.responseFacebook} />)
+        console.log("data grabbed");
     }
 
     return (
       <div>
-      {/*the button*/}
-      {fbContent}
+        {/*Header stating user's name*/}
+        <div className="logged-in fb">Logged in as {this.state.name}</div>
+        {/*the button*/}
+        {fbContent}
       </div>
     )
   }

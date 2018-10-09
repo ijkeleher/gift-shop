@@ -36,8 +36,6 @@ class App extends Component {
             </span>
             <Alert stack={{limit: 3}} />
           </div>
-          
-
           <AdminLogin/>
         </div>
       </Provider>

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 // const productsAPI = "https://react-shopping-cart-67954.firebaseio.com/products.json";
-const productsAPI = "/api/products";
+const productsAPI = "http://localhost:8080/api/products";
 
 // const productsAPI = "https://storage.googleapis.com/rmit-giftshop/products.json";
 

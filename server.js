@@ -7,19 +7,17 @@ const app = express();
 async function uploadNewImage(bucketName, filename) {
   // [START storage_upload_file]
   // Imports the Google Cloud client library
-  const {Storage} = require('@google-cloud/storage');
-
+	const {Storage} = require('@google-cloud/storage');
   // Creates a client
   const storage = new Storage();
 
   /**
    * TODO(developer): Uncomment the following lines before running the sample.
    */
-  const bucketName = bucketName;
-  const filename = `./src/static/products${filename}`;
+  const path = `./src/static/products/${filename}`;
 
   // Uploads a local file to the bucket
-  await storage.bucket(bucketName).upload(filename, {
+  await storage.bucket(bucketName).upload(path, {
     // Support for HTTP requests made with `Accept-Encoding: gzip`
     gzip: true,
     metadata: {
@@ -28,9 +26,14 @@ async function uploadNewImage(bucketName, filename) {
       // (If the contents will change, use cacheControl: 'no-cache')
       cacheControl: 'public, max-age=31536000',
     },
-  });
+	});
 
-  console.log(`${filename} uploaded to ${bucketName}.`);
+	await storage
+  .bucket(bucketName)
+  .file(filename)
+  .makePublic();
+	
+  console.log(`${path} uploaded to ${bucketName}.`);
   // [END storage_upload_file]
 }
 
@@ -161,7 +164,10 @@ app.post('/api/products/upload', upload.single('selectedFile'), (req, res) => {
 		filename() function defined in the diskStorage configuration. Other form fields
 		are available here in req.body.
 	*/
-	res.send();
+	res.send()
+	uploadNewImage("sept-gift-shop-images", `${SKUg}_1.jpg`);
+
+
 });
 
 
@@ -175,7 +181,6 @@ function addItem(request, response){
 	var price = Number(data.price);
 	var installments = Number(data.installments);
 	var shipping = data.shipping;
-	conosle.log("Wtf");
 
 	products.products.push({		
       "id": id,

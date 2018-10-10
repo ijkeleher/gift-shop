@@ -8,7 +8,7 @@ class EditProduct extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8001/api/products")
+    fetch("/api/products")
       .then(response => response.json())
       .then(data => this.setState({ data }));
   }
@@ -22,14 +22,15 @@ class EditProduct extends Component {
       var index = 0;  
       for (var i=0; i < this.state.data.products.length; i++) {
         if (this.state.data.products[i].title.localeCompare(this.props.title)===0) {
-          index = i;    
-          axios.get(`http://localhost:8001/api/products/edit/${index}/${userNum}?`).then(res=>{
+          index = i;          
+          axios.get(`api/products/edit/${index}/${userNum}?`).then(res=>{
             if(userName.length>0){
               index = 0;  
               for (i=0; i < this.state.data.products.length; i++) {
                 if (this.state.data.products[i].title.localeCompare(this.props.title)===0) {
                   index = i;
-                  fetch(`http://localhost:8001/api/products/edit/name/${index}/${userName}?`);   
+                  console.log("new name is: " + userName)
+                  fetch(`api/products/edit/name/${index}/${userName}?`);   
                 }
               }
             }

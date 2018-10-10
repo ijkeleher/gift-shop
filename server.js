@@ -2,8 +2,44 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
+
+
+async function uploadNewImage(bucketName, filename) {
+  // [START storage_upload_file]
+  // Imports the Google Cloud client library
+	const {Storage} = require('@google-cloud/storage');
+  // Creates a client
+  const storage = new Storage();
+
+  /**
+   * TODO(developer): Uncomment the following lines before running the sample.
+   */
+  const path = `./src/static/products/${filename}`;
+
+  // Uploads a local file to the bucket
+  await storage.bucket(bucketName).upload(path, {
+    // Support for HTTP requests made with `Accept-Encoding: gzip`
+    gzip: true,
+    metadata: {
+      // Enable long-lived HTTP caching headers
+      // Use only if the contents of the file will never change
+      // (If the contents will change, use cacheControl: 'no-cache')
+      cacheControl: 'public, max-age=31536000',
+    },
+	});
+
+	await storage
+  .bucket(bucketName)
+  .file(filename)
+  .makePublic();
+	
+  console.log(`${path} uploaded to ${bucketName}.`);
+  // [END storage_upload_file]
+}
+
+
 // Porta para subir o servidor
-const serverPort = 8001;
+const serverPort = process.env.PORT || 8080;
 
 // Seta as rotas default da API
 const routes = {
@@ -12,8 +48,18 @@ const routes = {
 	}
 };
 
+
+
+
 // Aplica o CORS para aceitar requisições de outros domínios
 app.use(cors());
+// app.use(express.static('build'))
+
+
+if (process.env.NODE_ENV === 'production') {
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, '/build')))
+}
 
 // Registra a rota GET default, enviando o JSON como retorno
 app.get(routes.products.get, function (req, res) {
@@ -118,7 +164,10 @@ app.post('/api/products/upload', upload.single('selectedFile'), (req, res) => {
 		filename() function defined in the diskStorage configuration. Other form fields
 		are available here in req.body.
 	*/
-	res.send();
+	res.send()
+	uploadNewImage("sept-gift-shop-images", `${SKUg}_1.jpg`);
+
+
 });
 
 

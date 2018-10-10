@@ -2,13 +2,19 @@
   "name": "react-shopping-cart",
   "version": "0.1.0",
   "description": "Shopping cart",
+  "proxy": "http://localhost:8080",
+  "engines": {
+    "node": "10.9.0",
+    "npm": "6.2.0"
+  },
   "private": true,
-  "homepage": "https://react-shopping-c-1536060086104.firebaseapp.com",
   "dependencies": {
+    "@google-cloud/storage": "^2.0.3",
     "antd": "^2.11.2",
     "auth0-js": "^9.7.3",
     "axios": "^0.18.0",
     "babel-preset-env": "^1.7.0",
+    "concurrently": "^4.0.1",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "file-system": "^2.2.2",
@@ -40,11 +46,11 @@
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-    "start": "react-scripts start",
     "build": "react-scripts build",
+    "start": "node server.js",
     "test": "jest",
+    "heroku-postbuild": "npm install && npm run build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "server": "nodemon --watch public server.js"
   },

@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const path = require('path');
+
 
 
 
@@ -125,7 +127,6 @@ function writeFile(request, response){
 }
 
 const multer = require("multer");
-const path = require("path");
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

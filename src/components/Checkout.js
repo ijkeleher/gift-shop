@@ -48,7 +48,7 @@ class Checkout extends Component {
     }
     productDetails = productDetails + this.props.cartTotals.totalPrice+'\n';
     /* fetch the JSON data */
-    fetch(`http://localhost:8001/api/products/write/${productDetails}`);
+    fetch(`/api/products/write/${productDetails}`);
 
   }
   /* Apply Discount function currently has hardcoded values for "20OFF" coupon*/

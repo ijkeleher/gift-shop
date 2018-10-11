@@ -14,10 +14,10 @@ async function uploadNewImage(bucketName, filename) {
   /**
    * TODO(developer): Uncomment the following lines before running the sample.
    */
-  const path = `./src/static/products/${filename}`;
+  const pathToFile = `./src/static/products/${filename}`;
 
   // Uploads a local file to the bucket
-  await storage.bucket(bucketName).upload(path, {
+  await storage.bucket(bucketName).upload(pathToFile, {
     // Support for HTTP requests made with `Accept-Encoding: gzip`
     gzip: true,
     metadata: {
@@ -33,7 +33,6 @@ async function uploadNewImage(bucketName, filename) {
   .file(filename)
   .makePublic();
 	
-  console.log(`${path} uploaded to ${bucketName}.`);
   // [END storage_upload_file]
 }
 

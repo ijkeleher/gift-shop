@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import EditProduct from "./EditProduct";
+import axios from 'axios';
 
 import Thumb from '../Thumb';
 
@@ -26,8 +27,9 @@ class Product extends React.Component {
 
   }
 
+
   render(){
-    
+  
     const product = this.props.product;
     // Um componente de input pode alterar a quantidade no futuro
     product.quantity = 1;
@@ -52,7 +54,7 @@ class Product extends React.Component {
         }
         <Thumb
           classes="shelf-item__thumb"
-          src={require(`../../static/products/${this.props.product.sku}_1.jpg`)}
+          src= {`https://storage.googleapis.com/sept-gift-shop-images/${this.props.product.sku}_1.jpg`}
           alt={this.props.product.title}
         />
         <p className="shelf-item__title">{this.props.product.title}</p>

@@ -20,6 +20,7 @@
     max-width: 300px;
     -webkit-transition: top .4s, bottom .4s;
     transition: top .4s, bottom .4s;
+    text-align: center;
 }
 
 .s-alert-box.s-alert-show {

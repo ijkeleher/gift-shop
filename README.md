@@ -8,7 +8,7 @@
   <img src="./react-shopping-cart.gif">
 </p>
 
-## Basic Overview  [Live Demo](https://react-shopping-cart-67954.firebaseapp.com/)
+## Basic Overview  [Live Demo](https://limitless-hollows-54481.herokuapp.com/) (please allow time to load)
 
 This simple shopping cart prototype shows how React components and Redux can be used to build a
 friendly user experience with instant visual updates and scaleable code in ecommerce applications.

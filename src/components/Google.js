@@ -15,8 +15,8 @@ export default class Google extends Component{
 
   responseGoogle= response => {
     /* test we recieved the auth object*/
+    console.log("Hello " + response.name + " Welcome");
     console.log(response);
-
   }
 
   componentClicked = () => console.log("clicked");
@@ -25,7 +25,13 @@ export default class Google extends Component{
     let googleContent;
 
     if(this.state.isLoggedIn){
-      googleContent = null;
+      googleContent = (<GoogleLogin
+        clientId=""
+        buttonText= "Logout"
+        autoLoad= ""
+        onSuccess= ""
+        onFailure= "" />)
+      /* console.log(localStorage.getItem("loginData").name); */
       /* client ID is registed with googleAUth. set autoLoad to true to autologin*/
     } else {
       googleContent = (<GoogleLogin
@@ -38,8 +44,9 @@ export default class Google extends Component{
 
     return (
       <div>
+        <div className="logged-in go">Logged in as Fernando</div>
         {/* render the button*/}
-      {googleContent}
+        {googleContent}
       </div>
     )
   }
